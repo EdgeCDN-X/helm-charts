@@ -1,0 +1,7 @@
+nameOverride: ""
+fullnameOverride: ""
+metallb:
+  addressPools: []
+    # - name: pool1
+    #   addresses: []
+    #   l2advertisement: true

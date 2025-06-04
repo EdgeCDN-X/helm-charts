@@ -1,0 +1,14 @@
+{{- range .Values.metallb.addressPools }}
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: {{ include "metallb-config.fullname" $ }}-{{ .name }}
+  labels:
+    {{- include "metallb-config.labels" $ | nindent 4 }}
+spec:
+  {{- with .addresses }}
+  addresses:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+{{- end }}
