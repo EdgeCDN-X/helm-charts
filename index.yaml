@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  metallb-config:
+  - apiVersion: v2
+    appVersion: 0.0.0
+    created: "2025-06-04T13:03:07.771622823Z"
+    description: A Helm chart for Kubernetes
+    digest: 7abeaca279cba5774ab0955730b75e07d71cb1d7e4dd6b22220c4bf5ad5ffebc
+    name: metallb-config
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/metallb-config-0.1.0/metallb-config-0.1.0.tgz
+    version: 0.1.0
   routing-config:
   - apiVersion: v2
     appVersion: 0.0.0
@@ -22,4 +33,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/test-0.1.2/test-0.1.2.tgz
     version: 0.1.2
-generated: "2025-05-14T19:36:26.972214639Z"
+generated: "2025-06-04T13:03:07.771633072Z"
