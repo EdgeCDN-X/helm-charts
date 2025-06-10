@@ -7,4 +7,5 @@ metadata:
     edgecdnx.com/location: "true"
 data:
   infrastructure-location-{{ .Values.name }}.yaml: |
+    name: {{ .Values.name | quote }}
     {{- toYaml .Values.location | nindent 4 }}
