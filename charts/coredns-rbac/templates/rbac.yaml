@@ -1,0 +1,24 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "coredns-rbac.fullname" . }}
+  labels:
+    {{- include "coredns-rbac.labels" . | nindent 4 }}
+rules:
+- apiGroups: [""]
+  resources: ["configmaps", "secrets"]
+  verbs: ["get", "watch", "list"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ include "coredns-rbac.fullname" . }}
+roleRef:
+  kind: ClusterRole
+  name: {{ include "coredns-rbac.fullname" . }}
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: ServiceAccount
+  name: {{ .Values.serviceAccount }}
+  namespace: {{ .Release.Namespace }}
