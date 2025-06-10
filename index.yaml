@@ -3,6 +3,16 @@ entries:
   infrastructure-location:
   - apiVersion: v2
     appVersion: 0.0.0
+    created: "2025-06-10T13:08:08.072838078Z"
+    description: A Helm chart for Kubernetes
+    digest: df37d142665d7822a440d1d6fa952c46a6d684048b791fb30b2739492d7b1fb4
+    name: infrastructure-location
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/infrastructure-location-0.1.1/infrastructure-location-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 0.0.0
     created: "2025-06-10T13:04:35.718452387Z"
     description: A Helm chart for Kubernetes
     digest: 913e8f278f9e8240c88027465f3917fb46de9ea9385efd68dca6bef7eaacd847
@@ -44,4 +54,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/test-0.1.2/test-0.1.2.tgz
     version: 0.1.2
-generated: "2025-06-10T13:04:35.718462276Z"
+generated: "2025-06-10T13:08:08.072855962Z"
