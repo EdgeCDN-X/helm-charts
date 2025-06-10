@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  coredns-rbac:
+  - apiVersion: v2
+    appVersion: 0.0.0
+    created: "2025-06-10T13:57:43.271425715Z"
+    description: Additional RBAC for CoreDNS to read Secrets and ConfigMaps
+    digest: 58b960575e7a913e1a50c780c5b3c9a82f8b70266d0ec1678d3e20008ec34e14
+    name: coredns-rbac
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/coredns-rbac-0.1.0/coredns-rbac-0.1.0.tgz
+    version: 0.1.0
   infrastructure-location:
   - apiVersion: v2
     appVersion: 0.0.0
@@ -54,4 +65,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/test-0.1.2/test-0.1.2.tgz
     version: 0.1.2
-generated: "2025-06-10T13:08:08.072855962Z"
+generated: "2025-06-10T13:57:43.271457154Z"
