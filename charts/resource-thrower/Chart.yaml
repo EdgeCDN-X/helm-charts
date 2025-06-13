@@ -1,0 +1,8 @@
+apiVersion: v2
+name: resource-thrower
+description: A Helm chart for Kubernetes to simply roll out resources whtever they're defined in the values
+type: application
+version: 0.1.0
+maintainers:
+  - name: edgecdnx.com
+    email: tbo@tbotech.sk
