@@ -63,6 +63,20 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/metallb-config-0.1.0/metallb-config-0.1.0.tgz
     version: 0.1.0
+  resource-thrower:
+  - apiVersion: v2
+    created: "2025-06-13T09:30:28.342975379Z"
+    description: A Helm chart for Kubernetes to simply roll out resources whtever
+      they're defined in the values
+    digest: 44c3a71f9eb0121fbbf52f1ea88e105ae2ba3f6c3a8406d55ae893f1c229baf4
+    maintainers:
+    - email: tbo@tbotech.sk
+      name: edgecdnx.com
+    name: resource-thrower
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/resource-thrower-0.1.0/resource-thrower-0.1.0.tgz
+    version: 0.1.0
   routing-config:
   - apiVersion: v2
     appVersion: 0.0.0
@@ -85,4 +99,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/test-0.1.2/test-0.1.2.tgz
     version: 0.1.2
-generated: "2025-06-12T13:21:57.688934711Z"
+generated: "2025-06-13T09:30:28.342988723Z"
