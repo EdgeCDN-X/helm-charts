@@ -9,6 +9,9 @@ rules:
 - apiGroups: [""]
   resources: ["configmaps", "secrets"]
   verbs: ["get", "watch", "list"]
+- apiGroups: ["infrastructure.edgecdnx.com"]
+  resources: ["prefixlists", "locations", "services"]
+  verbs: ["get", "watch", "list"]
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
