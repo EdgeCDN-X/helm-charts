@@ -21,6 +21,17 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/coredns-rbac-0.1.0/coredns-rbac-0.1.0.tgz
     version: 0.1.0
+  edgecdnx-controller:
+  - apiVersion: v2
+    appVersion: v0.1.0
+    created: "2025-06-20T09:33:26.140218373Z"
+    description: A Helm chart for Kubernetes
+    digest: dfaa616478160a0977055b11b7427347ad1956bc36ae41705185aa2e7a2baf3f
+    name: edgecdnx-controller
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgecdnx-controller-0.1.0/edgecdnx-controller-0.1.0.tgz
+    version: 0.1.0
   infrastructure-location:
   - apiVersion: v2
     appVersion: 0.0.0
@@ -109,4 +120,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/test-0.1.2/test-0.1.2.tgz
     version: 0.1.2
-generated: "2025-06-18T09:21:48.30691746Z"
+generated: "2025-06-20T09:33:26.140235445Z"
