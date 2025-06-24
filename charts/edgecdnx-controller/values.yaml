@@ -76,3 +76,6 @@ readinessProbe:
 nodeSelector: {}
 tolerations: []
 affinity: {}
+
+# can be set to cache-controller to run as cache controller
+role: controller
