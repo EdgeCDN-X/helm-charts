@@ -41,7 +41,7 @@ spec:
             - --leader-elect
             - --health-probe-bind-address=:8081
           {{- with .Values.role }}
-            - --role={{ .Values.role }}
+            - --role={{ . }}
           {{- end }}
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
