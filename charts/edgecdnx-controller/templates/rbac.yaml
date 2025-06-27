@@ -81,6 +81,29 @@ rules:
   verbs:
   - create
   - patch
+- apiGroups:
+  - "acme.cert-manager.io/v1"
+  resources:
+  - challenges
+  - orders
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - "cert-manager.io/v1"
+  resources:
+  - certificates
+  - certificaterequests
+  - certificatesigningrequests
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
 {{- if eq .Values.role "cache-controller" }}
 - apiGroups:
   - networking.k8s.io
