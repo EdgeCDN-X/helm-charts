@@ -43,6 +43,9 @@ spec:
           {{- with .Values.role }}
             - --role={{ . }}
           {{- end }}
+          {{- with .Values.consulEndpoint }}
+            - --consul-endpoint={{ . }}
+          {{- end }}
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
