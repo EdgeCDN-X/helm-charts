@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  consul-esm:
+  - apiVersion: v2
+    appVersion: "0.9"
+    created: "2025-07-01T12:13:36.334787544Z"
+    description: A Helm chart for Kubernetes
+    digest: 03d41de4b71f7cf40dab6111c75926aad338f6ed334fdd755278ea99a70674b5
+    name: consul-esm
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/consul-esm-0.1.0/consul-esm-0.1.0.tgz
+    version: 0.1.0
   coredns-rbac:
   - apiVersion: v2
     appVersion: 0.0.0
@@ -240,4 +251,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/test-0.1.2/test-0.1.2.tgz
     version: 0.1.2
-generated: "2025-07-01T11:48:29.806242127Z"
+generated: "2025-07-01T12:13:36.334825946Z"
