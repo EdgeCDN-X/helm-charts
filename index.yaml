@@ -54,6 +54,16 @@ entries:
     version: 0.1.0
   edgecdnx-controller:
   - apiVersion: v2
+    appVersion: v0.4.0
+    created: "2025-07-04T13:43:07.033573464Z"
+    description: A Helm chart for Kubernetes
+    digest: 6a7e900515d137fce6d37ff80b26186fa19f9d06ca18167f724f700c6e387a34
+    name: edgecdnx-controller
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgecdnx-controller-0.3.8/edgecdnx-controller-0.3.8.tgz
+    version: 0.3.8
+  - apiVersion: v2
     appVersion: v0.3.3
     created: "2025-07-03T12:26:58.558355057Z"
     description: A Helm chart for Kubernetes
@@ -301,4 +311,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/test-0.1.2/test-0.1.2.tgz
     version: 0.1.2
-generated: "2025-07-03T12:26:58.558491033Z"
+generated: "2025-07-04T13:43:07.033745418Z"
