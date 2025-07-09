@@ -313,6 +313,16 @@ entries:
   secure-urls:
   - apiVersion: v2
     appVersion: v0.1.1
+    created: "2025-07-09T14:23:52.934490082Z"
+    description: A Helm chart for Kubernetes
+    digest: 5acfefa277c02e7b3adf5617b6f3b07cf3fc17eb2ceef42beecd85e3516141a4
+    name: secure-urls
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/secure-urls-0.1.1/secure-urls-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: v0.1.1
     created: "2025-07-09T14:01:12.015993657Z"
     description: A Helm chart for Kubernetes
     digest: fa29b69319314ec9453a250db43ddebca76b31e3244a22437a946a8a83ce2883
@@ -332,4 +342,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/test-0.1.2/test-0.1.2.tgz
     version: 0.1.2
-generated: "2025-07-09T14:01:12.016061786Z"
+generated: "2025-07-09T14:23:52.934566975Z"
