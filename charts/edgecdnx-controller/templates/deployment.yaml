@@ -46,6 +46,9 @@ spec:
           {{- with .Values.consulEndpoint }}
             - --consul-endpoint={{ . }}
           {{- end }}
+          {{- with .Values.targetNamespace }}
+            - --infrastructure-target-namespace={{ . }}
+          {{- end }}
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
