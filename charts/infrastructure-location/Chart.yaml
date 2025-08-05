@@ -1,6 +1,0 @@
-apiVersion: v2
-name: infrastructure-location
-description: A Helm chart for Kubernetes
-type: application
-version: 0.1.3
-appVersion: "0.0.0"
