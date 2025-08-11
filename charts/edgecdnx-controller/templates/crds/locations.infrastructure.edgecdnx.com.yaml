@@ -1,10 +1,11 @@
+---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.17.2
   name: locations.infrastructure.edgecdnx.com
 spec:
-  conversion:
-    strategy: None
   group: infrastructure.edgecdnx.com
   names:
     kind: Location
@@ -13,86 +14,105 @@ spec:
     singular: location
   scope: Namespaced
   versions:
-    - name: v1alpha1
-      schema:
-        openAPIV3Schema:
-          description: Location is the Schema for the locations API.
-          properties:
-            apiVersion:
-              description: |-
-                APIVersion defines the versioned schema of this representation of an object.
-                Servers should convert recognized schemas to the latest internal value, and
-                may reject unrecognized values.
-                More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
-              type: string
-            kind:
-              description: |-
-                Kind is a string value representing the REST resource this object represents.
-                Servers may infer this from the endpoint the client submits requests to.
-                Cannot be updated.
-                In CamelCase.
-                More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-              type: string
-            metadata:
-              type: object
-            spec:
-              description: LocationSpec defines the desired state of Location.
-              properties:
-                fallbackLocations:
-                  items:
-                    type: string
-                  type: array
-                geoLookup:
-                  properties:
-                    attributes:
-                      additionalProperties:
-                        properties:
-                          values:
-                            items:
-                              properties:
-                                value:
-                                  type: string
-                                weight:
-                                  type: integer
-                              type: object
-                            type: array
-                          weight:
-                            type: integer
-                        type: object
-                      type: object
-                    weight:
-                      type: integer
-                  type: object
-                nodes:
-                  items:
-                    properties:
-                      caches:
-                        items:
-                          type: string
-                        type: array
-                      ipv4:
-                        type: string
-                      ipv6:
-                        type: string
-                      name:
-                        type: string
-                    type: object
-                  type: array
-              required:
-                - geoLookup
-              type: object
-            status:
-              description: LocationStatus defines the observed state of Location.
-              properties:
-                status:
-                  enum:
-                    - Healthy
-                    - Progressing
-                    - Degraded
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Location is the Schema for the locations API.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: LocationSpec defines the desired state of Location.
+            properties:
+              fallbackLocations:
+                description: Specifies the list of locations that this location can
+                  fall back to.
+                items:
                   type: string
-              type: object
-          type: object
-      served: true
-      storage: true
-      subresources:
-        status: {}
+                type: array
+              geoLookup:
+                description: Specifies the geo lookup configuration for this location.
+                properties:
+                  attributes:
+                    additionalProperties:
+                      properties:
+                        values:
+                          description: Attribute Values.
+                          items:
+                            properties:
+                              value:
+                                description: Value is the value of the attribute.
+                                type: string
+                              weight:
+                                description: Additional modifier Weight for the value.
+                                type: integer
+                            type: object
+                          type: array
+                        weight:
+                          description: Weight of this attribute
+                          type: integer
+                      type: object
+                    description: Attributes assigned for this location for GeoLookup.
+                    type: object
+                  weight:
+                    description: Weight of this location in case of load balancing
+                      between multiple locations.
+                    maximum: 1000
+                    minimum: 0
+                    type: integer
+                type: object
+              nodes:
+                description: Specifies the list of nodes that are part of this location.
+                items:
+                  properties:
+                    caches:
+                      description: Caches is the list of caches that are associated
+                        with this node.
+                      items:
+                        type: string
+                      type: array
+                      uniqueItems: true
+                    ipv4:
+                      description: Ipv4 is the IPv4 address of the node.
+                      type: string
+                    ipv6:
+                      description: Ipv6 is the IPv6 address of the node.
+                      type: string
+                    name:
+                      description: Name is the name of the node.
+                      type: string
+                  type: object
+                type: array
+            required:
+            - geoLookup
+            type: object
+          status:
+            description: LocationStatus defines the observed state of Location.
+            properties:
+              status:
+                enum:
+                - Healthy
+                - Progressing
+                - Degraded
+                type: string
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
