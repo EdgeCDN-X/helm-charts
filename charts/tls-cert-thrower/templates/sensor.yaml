@@ -5,7 +5,8 @@ metadata:
   labels:
     {{- include "tls-cert-thrower.labels" . | nindent 4 }}
 spec:
-  serviceAccountName: {{ include "tls-cert-thrower.serviceAccountName" . }}
+  template:
+    serviceAccountName: {{ include "tls-cert-thrower.serviceAccountName" . }}
   dependencies:
     - name: secret-event-dep
       eventSourceName: {{ include "tls-cert-thrower.fullname" . }}
