@@ -33,14 +33,14 @@ spec:
                 dependencyName: secret-event-dep
                 dataKey: body.metadata.namespace
               dest: metadata.namespace
-            - src:
-                dependencyName: secret-event-dep
-                dataKey: body.metadata.name
-              dest: metadata.ownerReferences[0].name
-            - src:
-                dependencyName: secret-event-dep
-                dataKey: body.metadata.uid
-              dest: metadata.ownerReferences[0].uid
+            # - src:
+            #     dependencyName: secret-event-dep
+            #     dataKey: body.metadata.name
+            #   dest: metadata.ownerReferences[0].name
+            # - src:
+            #     dependencyName: secret-event-dep
+            #     dataKey: body.metadata.uid
+            #   dest: metadata.ownerReferences[0].uid
             - src:
                 dependencyName: secret-event-dep
                 dataKey: body.metadata.annotations.target
@@ -56,13 +56,13 @@ spec:
               metadata:
                 name: "{{`{{ .Input.body.metadata.name }}`}}"
                 namespace: "{{`{{ .Input.body.metadata.namespace }}`}}"
-                ownerReferences:
-                  - apiVersion: v1
-                    kind: Secret
-                    name: "{{`{{ .Input.body.metadata.name }}`}}"
-                    uid: "{{`{{ .Input.body.metadata.uid }}`}}"
-                    controller: true
-                    blockOwnerDeletion: true
+                # ownerReferences:
+                #   - apiVersion: v1
+                #     kind: Secret
+                #     name: "{{`{{ .Input.body.metadata.name }}`}}"
+                #     uid: "{{`{{ .Input.body.metadata.uid }}`}}"
+                #     controller: true
+                #     blockOwnerDeletion: true
               spec:
                 project: default
                 source:
