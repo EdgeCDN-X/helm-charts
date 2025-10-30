@@ -1,4 +1,4 @@
-eventbus:
+eventBus:
   enabled: true
   version: 2.10.10
   replicas: 1
@@ -11,3 +11,5 @@ source:
       edgecdnx.com/resource-type: monitoring-tls
 
 
+serviceAccount:
+  create: true

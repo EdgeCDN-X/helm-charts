@@ -8,6 +8,6 @@ metadata:
     {{- include "tls-cert-thrower.labels" . | nindent 4 }}
 spec:
   jetstream:
-    version: {{ .Values.eventBus.jetstream.version }}
-    replicas: {{ .Values.eventBus.jetstream.replicas }}
+    version: {{ .Values.eventBus.version }}
+    replicas: {{ .Values.eventBus.replicas }}
 {{- end }}
