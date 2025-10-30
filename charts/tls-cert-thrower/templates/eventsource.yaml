@@ -5,6 +5,7 @@ metadata:
   labels:
     {{- include "tls-cert-thrower.labels" . | nindent 4 }}
 spec:
+  eventBusName: {{ include "tls-cert-thrower.fullname" . }}
   resource:
     secret-events:
       namespace: {{ $.Release.Namespace }}

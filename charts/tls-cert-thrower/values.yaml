@@ -6,9 +6,12 @@ eventBus:
 source:
   eventTypes:
     - ADD
+    - UPDATE
   filter:
     labels:
-      edgecdnx.com/resource-type: monitoring-tls
+      - key: edgecdnx.com/resource-type
+        value: monitoring-tls
+        operation: "=="
 
 
 serviceAccount:
