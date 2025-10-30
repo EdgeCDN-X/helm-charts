@@ -20,8 +20,36 @@ spec:
           version: v1alpha1
           resource: applications
           operation: create
+          parameters:
+            - src:
+                dependencyName: secret-event-dep
+                dataKey: body
+              dest: spec.source.helm.valuesObject.resources[0]
+            - src:
+                dependencyName: secret-event-dep
+                dataTemplate: "mon-tls-key-{{ .Input.body.metadata.annotations.target | nospace | lower }}"
+              dest: metadata.name
+            - src:
+                dependencyName: secret-event-dep
+                dataKey: body.metadata.namespace
+              dest: metadata.namespace
+            - src:
+                dependencyName: secret-event-dep
+                dataKey: body.metadata.name
+              dest: metadata.ownerReferences[0].name
+            - src:
+                dependencyName: secret-event-dep
+                dataKey: body.metadata.uid
+              dest: metadata.ownerReferences[0].uid
+            - src:
+                dependencyName: secret-event-dep
+                dataKey: body.metadata.annotations.target
+              dest: spec.destination.server
+            - src:
+                dependencyName: secret-event-dep
+                dataKey: body.metadata.namespace
+              dest: spec.destination.namespace
           source:
-
             resource:
               apiVersion: argoproj.io/v1alpha1
               kind: Application
@@ -37,32 +65,18 @@ spec:
                     blockOwnerDeletion: true
               spec:
                 project: default
-                parameters:
-                  - src:
-                      dependencyName: secret-event-dep
-                      dataKey: body
-                    dest: spec.source.helm.valuesObject.resources[0]
                 source:
                   repoURL: https://edgecdn-x.github.io/helm-charts
                   chart: resource-thrower
                   targetRevision: 0.1.0
                   helm:
-                    releaseName: "{{`{{ .Input.body.metadata.name }}`}}"
+                    releaseName: tls-cert-thrower
                     valuesObject:
                       resources: ["dummy"]
-                        # - apiVersion: v1
-                        #   kind: Secret
-                        #   metadata:
-                        #     name: "{{`{{ .Input.body.metadata.name }}`}}"
-                        #     namespace: "{{`{{ .Input.body.metadata.namespace }}`}}"
-                        #   data:
-                        #     ca.crt: "{{`{{ index .Input.body.data "ca.crt" }}`}}"
-                        #     tls.crt: "{{`{{ index .Input.body.data "tls.crt" }`}}"
-                        #     tls.key: "{{`{{ index .Input.body.data "tls.key" }`}}"
-              destination:
-                namespace: "{{`{{ .Input.body.metadata.namespace }}`}}"
-                server: "{{`{{ .Input.body.metadata.annotations.target }}`}}"
-              syncPolicy:
-                automated:
-                  selfHeal: true
+                destination:
+                  namespace: "{{`{{ .Input.body.metadata.namespace }}`}}"
+                  server: "{{`{{ .Input.body.metadata.annotations.target }}`}}"
+                syncPolicy:
+                  automated:
+                    selfHeal: true
 
