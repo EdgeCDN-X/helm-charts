@@ -1,7 +1,7 @@
 eventBus:
   enabled: true
   version: 2.10.10
-  replicas: 1
+  replicas: 3
 
 source:
   eventTypes:
