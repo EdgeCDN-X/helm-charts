@@ -27,7 +27,7 @@ spec:
               dest: spec.source.helm.valuesObject.resources[0]
             - src:
                 dependencyName: secret-event-dep
-                dataTemplate: "mon-tls-key-{{ .Input.body.metadata.annotations.target | nospace | lower }}"
+                dataTemplate: "mon-tls-key-{{`{{.Input.body.metadata.annotations.target | nospace | lower }}`}}"
               dest: metadata.name
             - src:
                 dependencyName: secret-event-dep
