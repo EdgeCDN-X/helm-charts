@@ -1,0 +1,27 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "tls-cert-thrower.fullname" . }}
+  labels:
+    {{- include "tls-cert-thrower.labels" . | nindent 4 }}
+rules:
+- apiGroups: [""]
+  resources: ["configmaps", "secrets"]
+  verbs: ["get", "watch", "list"]
+- apiGroups: ["argoproj.io"]
+  resources: ["applications"]
+  verbs: ["get", "watch", "list", "create", "update", "patch", "delete"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: {{ include "tls-cert-thrower.fullname" . }}
+roleRef:
+  kind: Role
+  name: {{ include "tls-cert-thrower.fullname" . }}
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+- kind: ServiceAccount
+  name: {{ include "tls-cert-thrower.serviceAccountName" . }}
+  namespace: {{ .Release.Namespace }}
