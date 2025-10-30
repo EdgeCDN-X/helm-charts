@@ -8,13 +8,16 @@ spec:
   template:
     serviceAccountName: {{ include "tls-cert-thrower.serviceAccountName" . }}
   dependencies:
-    - name: secret-event-dep
+    - name: secret-events-create
       eventSourceName: {{ include "tls-cert-thrower.fullname" . }}
-      eventName: secret-events
+      eventName: secret-events-create
+    - name: secret-events-update
+      eventSourceName: {{ include "tls-cert-thrower.fullname" . }}
+      eventName: secret-events-update
   eventBusName: {{ include "tls-cert-thrower.fullname" . }}
   triggers:
     - template:
-        name: throw-tls-cert
+        name: throw-tls-cert-create
         k8s:
           group: argoproj.io
           version: v1alpha1
@@ -22,34 +25,34 @@ spec:
           operation: create
           parameters:
             - src:
-                dependencyName: secret-event-dep
+                dependencyName: secret-events-create
                 dataKey: body
               dest: spec.source.helm.valuesObject.resources.0
             - src:
-                dependencyName: secret-event-dep
+                dependencyName: secret-events-create
                 dataTemplate: "mon-tls-key-{{`{{.Input.body.metadata.annotations.targetName | nospace | lower }}`}}"
               dest: metadata.name
             - src:
-                dependencyName: secret-event-dep
+                dependencyName: secret-events-create
                 dataKey: body.metadata.namespace
               dest: metadata.namespace
             - src:
-                dependencyName: secret-event-dep
+                dependencyName: secret-events-create
                 dataKey: body.metadata.name
               dest: metadata.ownerReferences.0.name
             - src:
-                dependencyName: secret-event-dep
+                dependencyName: secret-events-create
                 dataKey: body.metadata.uid
               dest: metadata.ownerReferences.0.uid
             - src:
-                dependencyName: secret-event-dep
+                dependencyName: secret-events-create
                 dataKey: body.metadata.annotations.target
               dest: spec.destination.server
             - src:
-                dependencyName: secret-event-dep
+                dependencyName: secret-events-create
                 dataKey: body.metadata.namespace
               dest: spec.destination.namespace
-          source:
+          source: &throw-tls-cert-create-source
             resource:
               apiVersion: argoproj.io/v1alpha1
               kind: Application
@@ -79,4 +82,40 @@ spec:
                 syncPolicy:
                   automated:
                     selfHeal: true
-
+    - template:
+        name: throw-tls-cert-update
+        k8s:
+          group: argoproj.io
+          version: v1alpha1
+          resource: applications
+          operation: update
+          parameters:
+            - src:
+                dependencyName: secret-events-update
+                dataKey: body
+              dest: spec.source.helm.valuesObject.resources.0
+            - src:
+                dependencyName: secret-events-update
+                dataTemplate: "mon-tls-key-{{`{{.Input.body.metadata.annotations.targetName | nospace | lower }}`}}"
+              dest: metadata.name
+            - src:
+                dependencyName: secret-events-update
+                dataKey: body.metadata.namespace
+              dest: metadata.namespace
+            - src:
+                dependencyName: secret-events-update
+                dataKey: body.metadata.name
+              dest: metadata.ownerReferences.0.name
+            - src:
+                dependencyName: secret-events-update
+                dataKey: body.metadata.uid
+              dest: metadata.ownerReferences.0.uid
+            - src:
+                dependencyName: secret-events-update
+                dataKey: body.metadata.annotations.target
+              dest: spec.destination.server
+            - src:
+                dependencyName: secret-events-update
+                dataKey: body.metadata.namespace
+              dest: spec.destination.namespace
+          source: *throw-tls-cert-create-source

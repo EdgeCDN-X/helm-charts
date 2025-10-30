@@ -9,12 +9,21 @@ spec:
   template:
     serviceAccountName: {{ include "tls-cert-thrower.serviceAccountName" . }}
   resource:
-    secret-events:
+    secret-events-create:
       namespace: {{ $.Release.Namespace }}
-      {{- with .Values.source.eventTypes }}
       eventTypes:
-        {{- toYaml . | nindent 8 }} 
+        - ADD
+      {{- with .Values.source.filter }}
+      filter:
+        {{- toYaml . | nindent 8 }}
       {{- end }}
+      group: ""
+      version: v1
+      resource: secrets
+    secret-events-update:
+      namespace: {{ $.Release.Namespace }}
+      eventTypes:
+        - UPDATE
       {{- with .Values.source.filter }}
       filter:
         {{- toYaml . | nindent 8 }}
