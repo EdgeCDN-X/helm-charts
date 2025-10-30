@@ -1,0 +1,5 @@
+apiVersion: v2
+name: tls-cert-thrower
+description: A helm chart which helps to orchestrate resource sync to different targets via Argo Events
+type: application
+version: 0.1.0

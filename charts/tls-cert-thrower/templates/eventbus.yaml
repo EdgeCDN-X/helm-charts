@@ -1,0 +1,13 @@
+{{- if .Values.eventBus.enabled }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: EventBus
+metadata:
+  name: {{ include "tls-cert-thrower.fullname" . }}
+  labels:
+    {{- include "tls-cert-thrower.labels" . | nindent 4 }}
+spec:
+  jetstream:
+    version: {{ .Values.eventBus.jetstream.version }}
+    replicas: {{ .Values.eventBus.jetstream.replicas }}
+{{- env }}

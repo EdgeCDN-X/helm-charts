@@ -1,0 +1,61 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Sensor
+metadata:
+  name: {{ include "tls-cert-thrower.fullname" . }}
+  labels:
+    {{- include "tls-cert-thrower.labels" . | nindent 4 }}
+spec:
+  serviceAccountName: {{ include "tls-cert-thrower.serviceAccountName" . }}
+  dependencies:
+    - name: secret-event-dep
+      eventSourceName: {{ include "tls-cert-thrower.fullname" . }}
+      eventName: secret-events
+  eventBusName: {{ include "tls-cert-thrower.fullname" . }}
+  triggers:
+    - template:
+        name: throw-tls-cert
+        k8s:
+          group: argoproj.io
+          version: v1alpha1
+          resource: applications
+          operation: create
+          source:
+            resource:
+              apiVersion: argoproj.io/v1alpha1
+              kind: Application
+              metadata:
+                name: "{{`{{ .Input.body.metadata.name }}`}}"
+                namespace: "{{`{{ .Input.body.metadata.namespace }}`}}"
+                ownerReferences:
+                  - apiVersion: v1
+                    kind: Secret
+                    name: "{{`{{ .Input.body.metadata.name }}`}}"
+                    uid: "{{`{{ .Input.body.metadata.uid }}`}}"
+                    controller: true
+                    blockOwnerDeletion: true
+              spec:
+                project: default
+                source:
+                  repoURL: https://edgecdn-x.github.io/helm-charts
+                  chart: resource-thrower
+                  targetRevision: 0.1.0
+                  helm:
+                    releaseName: "{{`{{ .Input.body.metadata.name }}`}}"
+                    values: |
+                      resources:
+                        - apiVersion: v1
+                          kind: Secret
+                          metadata:
+                            name: "{{`{{ .Input.body.metadata.name }}`}}"
+                            namespace: "{{`{{ .Input.body.metadata.namespace }}`}}"
+                          data:
+                            ca.crt: "{{`{{ index .Input.body.data "ca.crt" }}`}}"
+                            tls.crt: "{{`{{ index .Input.body.data "tls.crt" }`}}"
+                            tls.key: "{{`{{ index .Input.body.data "tls.key" }`}}"
+              destination:
+                namespace: "{{`{{ .Input.body.metadata.namespace }}`}}"
+                server: "{{`{{ .Input.body.metadata.annotations.target }}`}}"
+              syncPolicy:
+                automated:
+                  selfHeal: true
+

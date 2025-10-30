@@ -1,0 +1,13 @@
+eventbus:
+  enabled: true
+  version: 2.10.10
+  replicas: 1
+
+source:
+  eventTypes:
+    - ADD
+  filter:
+    labels:
+      edgecdnx.com/resource-type: monitoring-tls
+
+
