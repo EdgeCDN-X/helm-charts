@@ -464,6 +464,16 @@ entries:
     version: 0.1.2
   tls-cert-thrower:
   - apiVersion: v2
+    created: "2025-10-30T13:58:37.146902815Z"
+    description: A helm chart which helps to orchestrate resource sync to different
+      targets via Argo Events
+    digest: fb77862b60709a7eb9b866896fd9c522759263282ba27c3fdbc119794bdf28c9
+    name: tls-cert-thrower
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.1/tls-cert-thrower-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     created: "2025-10-30T13:54:42.163407943Z"
     description: A helm chart which helps to orchestrate resource sync to different
       targets via Argo Events
@@ -473,4 +483,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2025-10-30T13:54:42.163531635Z"
+generated: "2025-10-30T13:58:37.146990548Z"
