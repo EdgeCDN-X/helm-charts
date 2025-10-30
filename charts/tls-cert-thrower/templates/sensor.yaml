@@ -21,6 +21,7 @@ spec:
           resource: applications
           operation: create
           source:
+
             resource:
               apiVersion: argoproj.io/v1alpha1
               kind: Application
@@ -36,23 +37,28 @@ spec:
                     blockOwnerDeletion: true
               spec:
                 project: default
+                parameters:
+                  - src:
+                      dependencyName: secret-event-dep
+                      dataKey: body
+                    dest: spec.source.helm.valuesObject.resources[0]
                 source:
                   repoURL: https://edgecdn-x.github.io/helm-charts
                   chart: resource-thrower
                   targetRevision: 0.1.0
                   helm:
                     releaseName: "{{`{{ .Input.body.metadata.name }}`}}"
-                    values: |
-                      resources:
-                        - apiVersion: v1
-                          kind: Secret
-                          metadata:
-                            name: "{{`{{ .Input.body.metadata.name }}`}}"
-                            namespace: "{{`{{ .Input.body.metadata.namespace }}`}}"
-                          data:
-                            ca.crt: "{{`{{ index .Input.body.data "ca.crt" }}`}}"
-                            tls.crt: "{{`{{ index .Input.body.data "tls.crt" }`}}"
-                            tls.key: "{{`{{ index .Input.body.data "tls.key" }`}}"
+                    valuesObject:
+                      resources: ["dummy"]
+                        # - apiVersion: v1
+                        #   kind: Secret
+                        #   metadata:
+                        #     name: "{{`{{ .Input.body.metadata.name }}`}}"
+                        #     namespace: "{{`{{ .Input.body.metadata.namespace }}`}}"
+                        #   data:
+                        #     ca.crt: "{{`{{ index .Input.body.data "ca.crt" }}`}}"
+                        #     tls.crt: "{{`{{ index .Input.body.data "tls.crt" }`}}"
+                        #     tls.key: "{{`{{ index .Input.body.data "tls.key" }`}}"
               destination:
                 namespace: "{{`{{ .Input.body.metadata.namespace }}`}}"
                 server: "{{`{{ .Input.body.metadata.annotations.target }}`}}"
