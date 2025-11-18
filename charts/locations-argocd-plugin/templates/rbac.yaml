@@ -1,4 +1,11 @@
 {{- if .Values.serviceAccount.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "locations-argocd-plugin.serviceAccountName" . }}
+  labels:
+    {{- include "locations-argocd-plugin.labels" . | nindent 4 }}
+rules:
 - apiGroups:
   - infrastructure.edgecdnx.com
   resources:
