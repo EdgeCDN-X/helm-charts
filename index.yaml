@@ -436,6 +436,16 @@ entries:
   healthchecker:
   - apiVersion: v2
     appVersion: v0.1.0
+    created: "2025-11-21T14:51:15.480256957Z"
+    description: A Helm chart for Kubernetes
+    digest: eb7d47f6dafe896139f53fd7d41126f2cc6c2a693b9001639459c74cc3536e15
+    name: healthchecker
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/healthchecker-0.1.5/healthchecker-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
+    appVersion: v0.1.0
     created: "2025-11-21T14:47:10.216944169Z"
     description: A Helm chart for Kubernetes
     digest: 36fadbac076207b07390ee132436c0444bfb8418c96f24b8e6ed10bbc9e63faa
@@ -745,4 +755,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2025-11-21T14:47:10.217117853Z"
+generated: "2025-11-21T14:51:15.480412507Z"
