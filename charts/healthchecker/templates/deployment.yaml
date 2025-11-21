@@ -41,7 +41,10 @@ spec:
             {{- toYaml . | nindent 12 }}
           {{- end }}
           ports:
-            - name: http
+            - name: metrics
+              containerPort: 8080
+              protocol: TCP
+            - name: health
               containerPort: 8080
               protocol: TCP
           livenessProbe:
