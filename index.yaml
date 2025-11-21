@@ -413,6 +413,17 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgecdnx-controller-0.1.0/edgecdnx-controller-0.1.0.tgz
     version: 0.1.0
+  healthchecker:
+  - apiVersion: v2
+    appVersion: v0.1.0
+    created: "2025-11-21T14:04:35.899644896Z"
+    description: A Helm chart for Kubernetes
+    digest: 3d65908ac140863571d746f8be22c22d70d61053a3bd10b8ba28ee12077695be
+    name: healthchecker
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/healthchecker-0.1.0/healthchecker-0.1.0.tgz
+    version: 0.1.0
   infrastructure-location:
   - apiVersion: v2
     appVersion: 0.0.0
@@ -674,4 +685,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2025-11-19T11:52:13.965063131Z"
+generated: "2025-11-21T14:04:35.899794487Z"
