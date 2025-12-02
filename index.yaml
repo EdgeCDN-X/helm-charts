@@ -52,6 +52,17 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/coredns-rbac-0.1.0/coredns-rbac-0.1.0.tgz
     version: 0.1.0
+  dashboards:
+  - apiVersion: v2
+    appVersion: v0.0.0
+    created: "2025-12-02T14:16:55.620513768Z"
+    description: A Helm chart for Grafana Dashboards for the EdgeCDN-X Platform
+    digest: 5642157c80318fe997a3d489cf2813aa6761d96cf4a589c36352893bdf960143
+    name: dashboards
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/dashboards-0.1.0/dashboards-0.1.0.tgz
+    version: 0.1.0
   edgecdnx-controller:
   - apiVersion: v2
     appVersion: v0.13.0
@@ -795,4 +806,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2025-12-01T12:22:28.122232496Z"
+generated: "2025-12-02T14:16:55.620649412Z"
