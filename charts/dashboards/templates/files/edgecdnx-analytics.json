@@ -1,0 +1,494 @@
+{
+    "annotations": {
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": {
+                    "type": "grafana",
+                    "uid": "-- Grafana --"
+                },
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "type": "dashboard"
+            }
+        ]
+    },
+    "description": "All Sorts of Analytics output for services",
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 0,
+    "links": [],
+    "panels": [
+        {
+            "datasource": {
+                "type": "grafana-postgresql-datasource",
+                "uid": "ff5vsl6926n0gb"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "barWidthFactor": 0.6,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "insertNulls": false,
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "showValues": false,
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": 0
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "Mbits"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 11,
+                "w": 24,
+                "x": 0,
+                "y": 0
+            },
+            "id": 2,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "table",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "hideZeros": false,
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "pluginVersion": "12.2.1",
+            "targets": [
+                {
+                    "dataset": "app",
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ff5vsl6926n0gb"
+                    },
+                    "editorMode": "code",
+                    "format": "time_series",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  time_bucket('$__interval', created_at) AS time,\n  vhost,\n  location,\n  (SUM(bytes_sent) * 8) / (EXTRACT(EPOCH FROM '$__interval'::interval) * 1000000) AS mbps\nFROM analytics\nWHERE $__timeFilter(created_at)\n  AND vhost IN ($vhost)\n  AND location IN ($location)\nGROUP BY time, vhost, location\nORDER BY time, vhost, location;",
+                    "refId": "A",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    }
+                }
+            ],
+            "title": "Bandwidth",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "grafana-postgresql-datasource",
+                "uid": "ff5vsl6926n0gb"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": "auto",
+                        "cellOptions": {
+                            "type": "auto"
+                        },
+                        "footer": {
+                            "reducers": []
+                        },
+                        "hideFrom": {
+                            "viz": false
+                        },
+                        "inspect": false
+                    },
+                    "fieldMinMax": false,
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": 0
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "decbytes"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 11
+            },
+            "id": 3,
+            "options": {
+                "cellHeight": "sm",
+                "showHeader": true
+            },
+            "pluginVersion": "12.2.1",
+            "targets": [
+                {
+                    "dataset": "app",
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ff5vsl6926n0gb"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  vhost,\n  SUM(bytes_sent) :: float as bytes_sent,\n  SUM(upstream_bytes) :: float as upstream_bytes\nFROM\n  analytics\nWHERE\n  $__timeFilter(created_at)\n  AND vhost IN ($vhost)\nGROUP BY\n  vhost",
+                    "refId": "A",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    }
+                }
+            ],
+            "title": "Total Data",
+            "type": "table"
+        },
+        {
+            "datasource": {
+                "type": "grafana-postgresql-datasource",
+                "uid": "ff5vsl6926n0gb"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": "auto",
+                        "cellOptions": {
+                            "type": "auto"
+                        },
+                        "footer": {
+                            "reducers": []
+                        },
+                        "hideFrom": {
+                            "viz": false
+                        },
+                        "inspect": false
+                    },
+                    "fieldMinMax": false,
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": 0
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "percentunit"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 11
+            },
+            "id": 4,
+            "options": {
+                "cellHeight": "sm",
+                "showHeader": true
+            },
+            "pluginVersion": "12.2.1",
+            "targets": [
+                {
+                    "dataset": "app",
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ff5vsl6926n0gb"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  vhost,\n  (SUM(bytes_sent) - SUM(upstream_bytes))::float / NULLIF(SUM(bytes_sent), 0) AS cache_hit_ratio\nFROM\n  analytics\nWHERE\n  $__timeFilter(created_at)\n  AND vhost IN ($vhost)\nGROUP BY vhost",
+                    "refId": "A",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    }
+                }
+            ],
+            "title": "Hit ratio",
+            "type": "table"
+        },
+        {
+            "datasource": {
+                "type": "grafana-postgresql-datasource",
+                "uid": "ff5vsl6926n0gb"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisBorderShow": true,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "MB",
+                        "axisPlacement": "auto",
+                        "fillOpacity": 80,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineWidth": 1,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": 0
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 10,
+                "w": 24,
+                "x": 0,
+                "y": 19
+            },
+            "id": 1,
+            "options": {
+                "barRadius": 0,
+                "barWidth": 0.97,
+                "fullHighlight": false,
+                "groupWidth": 0.7,
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "table",
+                    "placement": "right",
+                    "showLegend": true
+                },
+                "orientation": "auto",
+                "showValue": "auto",
+                "stacking": "none",
+                "tooltip": {
+                    "hideZeros": false,
+                    "mode": "single",
+                    "sort": "none"
+                },
+                "xField": "vhost",
+                "xTickLabelRotation": 0,
+                "xTickLabelSpacing": 0
+            },
+            "pluginVersion": "12.2.1",
+            "repeat": "location",
+            "repeatDirection": "h",
+            "targets": [
+                {
+                    "dataset": "app",
+                    "datasource": {
+                        "type": "grafana-postgresql-datasource",
+                        "uid": "ff5vsl6926n0gb"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  vhost,\n  location,\n  SUM(bytes_sent) :: float / 1024 / 1024 AS bytes_sent_mb,\n  SUM(upstream_bytes) :: float / 1024 / 1024 AS upstream_bytes_mb\nFROM\n  analytics\nWHERE\n  $__timeFilter(created_at)\n  AND vhost IN ($vhost)\n  AND location IN ($location)\nGROUP BY\n  vhost,\n  location\nORDER BY\n  vhost,\n  location;",
+                    "refId": "A",
+                    "sql": {
+                        "columns": [
+                            {
+                                "parameters": [],
+                                "type": "function"
+                            }
+                        ],
+                        "groupBy": [
+                            {
+                                "property": {
+                                    "type": "string"
+                                },
+                                "type": "groupBy"
+                            }
+                        ],
+                        "limit": 50
+                    }
+                }
+            ],
+            "title": "Data sent / received [MB] - ${location}",
+            "type": "barchart"
+        }
+    ],
+    "preload": false,
+    "refresh": "auto",
+    "schemaVersion": 42,
+    "tags": [],
+    "templating": {
+        "list": [
+            {
+                "allValue": "",
+                "current": {
+                    "text": "All",
+                    "value": "$__all"
+                },
+                "datasource": {
+                    "type": "grafana-postgresql-datasource",
+                    "uid": "ff5vsl6926n0gb"
+                },
+                "definition": "SELECT DISTINCT vhost FROM analytics WHERE $__timeFilter(created_at);",
+                "description": "",
+                "includeAll": true,
+                "label": "vhost",
+                "name": "vhost",
+                "options": [],
+                "query": "SELECT DISTINCT vhost FROM analytics WHERE $__timeFilter(created_at);",
+                "refresh": 2,
+                "regex": "/.*\\.edgecdnx.com/",
+                "sort": 1,
+                "type": "query"
+            },
+            {
+                "current": {
+                    "text": "All",
+                    "value": "$__all"
+                },
+                "datasource": {
+                    "type": "grafana-postgresql-datasource",
+                    "uid": "ff5vsl6926n0gb"
+                },
+                "definition": "SELECT DISTINCT location FROM analytics WHERE $__timeFilter(created_at);",
+                "description": "",
+                "includeAll": true,
+                "label": "Location",
+                "name": "location",
+                "options": [],
+                "query": "SELECT DISTINCT location FROM analytics WHERE $__timeFilter(created_at);",
+                "refresh": 2,
+                "regex": "",
+                "type": "query"
+            }
+        ]
+    },
+    "time": {
+        "from": "now-12h",
+        "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "browser",
+    "title": "EdgeCDN-X Analytics",
+    "uid": "adqs7dk",
+    "version": 26,
+    "weekStart": "monday"
+}
