@@ -1,5 +1,5 @@
 dashboards:
   edgecdnx-analytics:
-    source: edgecdnx-analytics.json
+    source: files/edgecdnx-analytics.json
 labels: {}
 annotations: {}

@@ -12,6 +12,6 @@ metadata:
   {{- end }}
   name: {{ include "dashboards.fullname" $ }}-{{ $k }}
 data:
-  {{ $k }}.json: |
-    {{ $.Files.Get $dash.source }} 
+  {{ $k }}.json: | 
+    {{- $.Files.Get $dash.source | printf "%s" | nindent 4 }} 
 {{- end }}
