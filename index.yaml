@@ -55,6 +55,16 @@ entries:
   dashboards:
   - apiVersion: v2
     appVersion: v0.0.0
+    created: "2025-12-03T09:59:36.768094761Z"
+    description: A Helm chart for Grafana Dashboards for the EdgeCDN-X Platform
+    digest: 3f7d5935b4b4c91cfbb0d2f721424003f399628d189615f3d4b0f4691f40ad69
+    name: dashboards
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/dashboards-0.1.2/dashboards-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: v0.0.0
     created: "2025-12-02T14:24:10.857904194Z"
     description: A Helm chart for Grafana Dashboards for the EdgeCDN-X Platform
     digest: 291e01547d7b611e068ffc777ab1365c2ef60a6d51adcc8e4848dc48242ae833
@@ -816,4 +826,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2025-12-02T14:24:10.858059054Z"
+generated: "2025-12-03T09:59:36.768284245Z"
