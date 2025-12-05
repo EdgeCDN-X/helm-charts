@@ -1,0 +1,55 @@
+{{- if .Values.externalService.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "fluent-bit.fullname" . }}-external
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "fluent-bit.labels" . | nindent 4 }}
+    {{- with .Values.externalService.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  {{- with .Values.externalService.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  type: {{ .Values.externalService.type }}
+  {{- if and (eq .Values.externalService.type "ClusterIP") (.Values.externalService.clusterIP) }}
+  clusterIP: {{ .Values.externalService.clusterIP }}
+  {{- end }}
+  {{- if .Values.externalService.externalIPs }}
+  externalIPs: {{- toYaml .Values.externalService.externalIPs | nindent 4 }}
+  {{- end }}
+  {{- if (eq .Values.kind "DaemonSet") }}
+  {{- with .Values.externalService.internalTrafficPolicy }}
+  internalTrafficPolicy: {{ . }}
+  {{- end }}
+  {{- end }}
+  {{- if (eq .Values.externalService.type "LoadBalancer")}}
+  {{- with .Values.externalService.loadBalancerClass}}
+  loadBalancerClass: {{ . }}
+  {{- end }}
+  {{- with .Values.externalService.loadBalancerSourceRanges}}
+  loadBalancerSourceRanges:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- with .Values.externalService.loadBalancerIP}}
+  loadBalancerIP: {{ . }}
+  {{- end }}
+  {{- end }}
+  ports:
+  {{- if .Values.extraExternalPorts }}
+    {{- range .Values.extraExternalPorts }}
+    - name: {{ .name }}
+      targetPort: {{ .name }}
+      protocol: {{ .protocol }}
+      port: {{ .port }}
+      {{- if and (eq $.Values.externalService.type "NodePort") (.nodePort) }}
+      nodePort: {{ .nodePort }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+  selector:
+    {{- include "fluent-bit.selectorLabels" . | nindent 4 }}
+{{- end }}
