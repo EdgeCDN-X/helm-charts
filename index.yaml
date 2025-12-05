@@ -484,6 +484,38 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgecdnx-controller-0.1.0/edgecdnx-controller-0.1.0.tgz
     version: 0.1.0
+  fluent-bit:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Added extraExternalPorts to allow defining additional ports on the external service.""
+    apiVersion: v1
+    appVersion: 4.1.0
+    created: "2025-12-05T09:06:25.982688158Z"
+    description: Fast and lightweight log processor and forwarder or Linux, OSX and
+      BSD family operating systems. - Forked from https://github.com/fluent/helm-charts
+    digest: ab52bc0e8b1abcf45e383791e8ee8b42255c743c4c2c90a47eadc96d03827fe4
+    home: https://fluentbit.io/
+    icon: https://raw.githubusercontent.com/cncf/artwork/master/projects/fluentd/fluentbit/icon/fluentbit-icon-color.svg
+    keywords:
+    - logging
+    - fluent-bit
+    - fluentd
+    maintainers:
+    - email: eduardo@calyptia.com
+      name: edsiper
+    - email: naseem@transit.app
+      name: naseemkullah
+    - email: towmeykaw@gmail.com
+      name: Towmeykaw
+    - email: steve.hipwell@gmail.com
+      name: stevehipwell
+    name: fluent-bit
+    sources:
+    - https://github.com/fluent/fluent-bit/
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/fluent-bit-0.55.0/fluent-bit-0.55.0.tgz
+    version: 0.55.0
   healthchecker:
   - apiVersion: v2
     appVersion: v0.1.0
@@ -826,4 +858,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2025-12-03T09:59:36.768284245Z"
+generated: "2025-12-05T09:06:25.9828505Z"
