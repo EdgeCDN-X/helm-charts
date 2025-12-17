@@ -40,6 +40,10 @@ spec:
               protocol: TCP
           command: 
             - /edgecdnx-api
+          {{- with .Values.env }}
+          env:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           {{- with .Values.args }}
           args:
             {{- toYaml . | nindent 12 }}
