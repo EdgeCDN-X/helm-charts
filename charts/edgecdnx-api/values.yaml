@@ -38,9 +38,7 @@ ingress:
   tls: []
 
 resources: {}
-
-command:
-  - /edgecdnx-api
+args:
   - --listen=0.0.0.0:5555
   - --namespace=edgecdnx
   - --production
