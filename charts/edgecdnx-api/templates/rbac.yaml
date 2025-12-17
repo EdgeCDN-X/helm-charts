@@ -21,6 +21,6 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 subjects:
 - kind: ServiceAccount
-  name: {{ .Values.serviceAccount }}
+  name: {{ include "edgecdnx-api.serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}
 {{- end }}
