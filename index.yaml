@@ -24,6 +24,16 @@ entries:
   coredns-rbac:
   - apiVersion: v2
     appVersion: 0.0.0
+    created: "2026-01-08T12:33:50.813063096Z"
+    description: Additional RBAC for CoreDNS to read Secrets and ConfigMaps
+    digest: b968796ddd9816555c21f1a51f1a466f853fe598956e7d70a5ee16181b5a12f7
+    name: coredns-rbac
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/coredns-rbac-0.1.4/coredns-rbac-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 0.0.0
     created: "2026-01-08T12:25:07.014177017Z"
     description: Additional RBAC for CoreDNS to read Secrets and ConfigMaps
     digest: 286285d0fe39638152f146f52ff094aae822f438772f27b8e9ab01dfb16e0862
@@ -959,4 +969,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-08T12:25:07.258253775Z"
+generated: "2026-01-08T12:33:50.813237696Z"
