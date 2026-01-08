@@ -10,7 +10,7 @@ rules:
   resources: ["configmaps", "secrets"]
   verbs: ["get", "watch", "list"]
 - apiGroups: ["infrastructure.edgecdnx.com"]
-  resources: ["prefixlists", "locations", "services"]
+  resources: ["prefixlists", "locations", "services", "zones"]
   verbs: ["get", "watch", "list"]
 ---
 kind: ClusterRoleBinding

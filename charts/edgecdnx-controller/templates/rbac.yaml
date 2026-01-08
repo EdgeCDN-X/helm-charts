@@ -25,6 +25,7 @@ rules:
   - locations
   - prefixlists
   - services
+  - zones
   verbs:
   - create
   - delete
@@ -39,6 +40,7 @@ rules:
   - locations/finalizers
   - prefixlists/finalizers
   - services/finalizers
+  - zones/finalizers
   verbs:
   - update
 - apiGroups:
@@ -47,6 +49,7 @@ rules:
   - locations/status
   - prefixlists/status
   - services/status
+  - zones/status
   verbs:
   - get
   - patch
