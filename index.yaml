@@ -821,6 +821,17 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/metallb-config-0.1.0/metallb-config-0.1.0.tgz
     version: 0.1.0
+  request-analyser:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2026-02-13T10:10:00.598816444Z"
+    description: A Helm chart for Kubernetes
+    digest: c4b035f0e6201078fab67fd3b8afbaef907e9fa0182337a589f80d6bfcce4dfb
+    name: request-analyser
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/request-analyser-0.1.5/request-analyser-0.1.5.tgz
+    version: 0.1.5
   resource-thrower:
   - apiVersion: v2
     created: "2025-06-13T09:30:28.342975379Z"
@@ -999,4 +1010,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2026-02-10T22:10:22.131766886Z"
+generated: "2026-02-13T10:10:00.598982824Z"
