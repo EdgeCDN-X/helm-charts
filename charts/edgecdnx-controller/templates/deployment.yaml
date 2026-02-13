@@ -40,8 +40,9 @@ spec:
               containerPort: 9443
               name: webhook-server
               protocol: TCP
-          {{- end }}
+          {{- else }}
           ports: []
+          {{- end }}
           env:
             - name: ENABLE_WEBHOOKS
               value: "{{ .Values.webhook.enabled }}"
