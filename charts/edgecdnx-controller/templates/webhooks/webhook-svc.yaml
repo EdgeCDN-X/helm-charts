@@ -9,9 +9,9 @@ spec:
   type: ClusterIP
   ports:
     - port: 443
-      targetPort: webhook
+      targetPort: webhook-server
       protocol: TCP
-      name: webhook
+      name: webhook-server
   selector:
     {{- include "edgecdnx-controller.selectorLabels" . | nindent 4 }}
 {{- end }}
