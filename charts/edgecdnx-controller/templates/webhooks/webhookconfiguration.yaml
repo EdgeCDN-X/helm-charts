@@ -11,7 +11,7 @@ webhooks:
 - name: service-validate.edgecdnx.com
   clientConfig:
     service:
-      name: {{ include "edgecdnx-controller.fullname" . }}-webhook
+      name: {{ include "edgecdnx-controller.fullname" . }}
       namespace: {{ .Release.Namespace }}
       path: /validate-infrastructure-edgecdnx-com-v1alpha1-service
   rules:
