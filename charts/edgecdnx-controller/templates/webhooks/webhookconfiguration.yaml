@@ -6,7 +6,7 @@ metadata:
   labels:
     {{- include "edgecdnx-controller.labels" . | nindent 4 }}
   annotations:
-    cert-manager.io/inject-ca-from: {{ .Release.Namespace }}/{{ include "edgecdnx-controller.fullname" . }}-tls
+    cert-manager.io/inject-ca-from: {{ .Release.Namespace }}/{{ include "edgecdnx-controller.fullname" . }}
 webhooks:
 - name: service-validate.edgecdnx.com
   clientConfig:
