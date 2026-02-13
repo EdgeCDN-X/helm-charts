@@ -84,5 +84,6 @@ targetNamespace: ""
 
 clusterDomain: cluster.local
 
+# This is unforutnately string type, because or argocd Applicationset Limitation.
 webhook:
-  enabled: true
+  enabled: "true"
