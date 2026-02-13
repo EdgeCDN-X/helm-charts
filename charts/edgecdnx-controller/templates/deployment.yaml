@@ -36,8 +36,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           {{- if .Values.webhook.enabled }}
           ports:
-            - port: 443
-              containerPort: 9443
+            - containerPort: 9443
               name: webhook-server
               protocol: TCP
           {{- else }}
