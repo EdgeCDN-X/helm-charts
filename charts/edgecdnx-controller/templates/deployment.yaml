@@ -34,7 +34,17 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          {{- if .Values.webhook.enabled }}
+          ports:
+            - port: 443
+              containerPort: 9443
+              name: webhook-server
+              protocol: TCP
+          {{- end }}
           ports: []
+          env:
+            - name: ENABLE_WEBHOOKS
+              value: "{{ .Values.webhook.enabled }}"
           command:
             - /manager
           args:
@@ -49,12 +59,21 @@ spec:
           {{- with .Values.targetNamespace }}
             - --infrastructure-target-namespace={{ . }}
           {{- end }}
+          {{- if .Values.webhook.enabled }}
+            - --webhook-cert-path=/certs/webhook
+          {{- end }}
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
             {{- toYaml .Values.readinessProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          {{- if .Values.webhook.enabled }}
+          volumeMounts:
+            - name: webhook-certs
+              mountPath: /certs/webhook
+              readOnly: true
+          {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -66,4 +85,10 @@ spec:
       {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if .Values.webhook.enabled }}
+      volumes:
+        - name: webhook-certs
+          secret:
+            secretName: {{ include "edgecdnx-controller.fullname" . }}-tls
       {{- end }}

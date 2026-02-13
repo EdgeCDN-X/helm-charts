@@ -1,0 +1,27 @@
+{{- if .Values.webhook.enabled }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  labels:
+    {{- include "edgecdnx-controller.labels" . | nindent 4 }}
+  name: {{ include "edgecdnx-controller.fullname" . }}
+spec:
+  secretName: {{ include "edgecdnx-controller.fullname" . }}-tls
+  duration: 2160h # 90 days
+  renewBefore: 360h # Renew 15 days before expiration
+  subject:
+    organizations:
+    - edgecdnx.com
+  commonName: {{ include "edgecdnx-controller.fullname" . }}.{{ .Release.Namespace }}.svc
+  dnsNames:
+  - {{ include "edgecdnx-controller.fullname" . }}
+  - {{ include "edgecdnx-controller.fullname" . }}.{{ .Release.Namespace }}
+  - {{ include "edgecdnx-controller.fullname" . }}.{{ .Release.Namespace }}.svc
+  - {{ include "edgecdnx-controller.fullname" . }}.{{ .Release.Namespace }}.svc.{{ .Values.clusterDomain }}
+  issuerRef:
+    name: {{ include "edgecdnx-controller.fullname" . }}
+    kind: Issuer
+  privateKey:
+    algorithm: RSA
+    size: 2048
+{{- end }}

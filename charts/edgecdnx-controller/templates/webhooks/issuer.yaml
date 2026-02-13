@@ -1,0 +1,10 @@
+{{- if .Values.webhook.enabled }}
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  labels:
+    {{- include "edgecdnx-controller.labels" . | nindent 4 }}
+  name: {{ include "edgecdnx-controller.fullname" . }}
+spec:
+  selfSigned: {}
+{{- end }}

@@ -81,3 +81,8 @@ affinity: {}
 role: controller
 consulEndpoint: ""
 targetNamespace: ""
+
+clusterDomain: cluster.local
+
+webhook:
+  enabled: true

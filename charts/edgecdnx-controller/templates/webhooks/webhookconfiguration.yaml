@@ -1,0 +1,25 @@
+{{- if .Values.webhook.enabled }}
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: {{ include "edgecdnx-controller.fullname" . }}-validation-webhook
+  labels:
+    {{- include "edgecdnx-controller.labels" . | nindent 4 }}
+  annotations:
+    cert-manager.io/inject-ca-from: {{ .Release.Namespace }}/{{ include "edgecdnx-controller.fullname" . }}-tls
+webhooks:
+- name: service-validate.edgecdnx.com
+  clientConfig:
+    service:
+      name: {{ include "edgecdnx-controller.fullname" . }}-webhook
+      namespace: {{ .Release.Namespace }}
+      path: /validate-infrastructure-edgecdnx-com-v1alpha1-service
+  rules:
+  - operations: ["CREATE", "UPDATE"]
+    apiGroups: ["infrastructure.edgecdnx.com"]
+    apiVersions: ["v1alpha1"]
+    resources: ["services"]
+  admissionReviewVersions: ["v1"]
+  sideEffects: None
+  failurePolicy: Fail
+{{- end }}
