@@ -15,7 +15,21 @@ webhooks:
       namespace: {{ .Release.Namespace }}
       path: /validate-infrastructure-edgecdnx-com-v1alpha1-service
   rules:
-  - operations: ["CREATE", "UPDATE"]
+  - operations: ["CREATE", "UPDATE", "DELETE"]
+    apiGroups: ["infrastructure.edgecdnx.com"]
+    apiVersions: ["v1alpha1"]
+    resources: ["services"]
+  admissionReviewVersions: ["v1"]
+  sideEffects: None
+  failurePolicy: Fail
+- name: zone-validate.edgecdnx.com
+  clientConfig:
+    service:
+      name: {{ include "edgecdnx-controller.fullname" . }}
+      namespace: {{ .Release.Namespace }}
+      path: /validate-infrastructure-edgecdnx-com-v1alpha1-zone
+  rules:
+  - operations: ["CREATE", "UPDATE", "DELETE"]
     apiGroups: ["infrastructure.edgecdnx.com"]
     apiVersions: ["v1alpha1"]
     resources: ["services"]
