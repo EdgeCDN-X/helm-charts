@@ -32,7 +32,7 @@ webhooks:
   - operations: ["CREATE", "UPDATE", "DELETE"]
     apiGroups: ["infrastructure.edgecdnx.com"]
     apiVersions: ["v1alpha1"]
-    resources: ["services"]
+    resources: ["zones"]
   admissionReviewVersions: ["v1"]
   sideEffects: None
   failurePolicy: Fail
