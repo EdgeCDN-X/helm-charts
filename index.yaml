@@ -950,6 +950,17 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/infrastructure-location-0.1.0/infrastructure-location-0.1.0.tgz
     version: 0.1.0
+  keycloak:
+  - apiVersion: v2
+    appVersion: 26.5.4
+    created: "2026-03-02T10:09:41.328148938Z"
+    description: A Helm chart for Keycloak
+    digest: 7f817a852aae560ea1939191e853a4328423dfa26954d06baccdf900edaea337
+    name: keycloak
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/keycloak-0.1.0/keycloak-0.1.0.tgz
+    version: 0.1.0
   locations-argocd-plugin:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -1181,4 +1192,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2026-02-26T14:32:58.791324299Z"
+generated: "2026-03-02T10:09:41.328415133Z"
