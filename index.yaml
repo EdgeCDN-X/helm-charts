@@ -953,6 +953,16 @@ entries:
   keycloak:
   - apiVersion: v2
     appVersion: 26.5.4
+    created: "2026-03-02T10:27:26.524584831Z"
+    description: A Helm chart for Keycloak
+    digest: b43a543ead2e0234d0d8f6dc5a6bb18713dda17c88480c2aa8b8db8b810b1600
+    name: keycloak
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/keycloak-0.1.1/keycloak-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 26.5.4
     created: "2026-03-02T10:09:41.328148938Z"
     description: A Helm chart for Keycloak
     digest: 7f817a852aae560ea1939191e853a4328423dfa26954d06baccdf900edaea337
@@ -1192,4 +1202,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2026-03-02T10:09:41.328415133Z"
+generated: "2026-03-02T10:27:26.524869668Z"
