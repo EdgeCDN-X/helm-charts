@@ -120,13 +120,14 @@ config:
   production: true
   apiUrl: "https://api.demo.edgecdnx.com"
   auth:
+    allowSignup: true
     oidc:
       issuer: "https://dex.demo.edgecdnx.com/dex"
       token: "https://dex.demo.edgecdnx.com/dex/token_endpoint"
       clientId: "edgecdnx"
       scope: "openid profile email"
       requireHttps: true
-      redirectUris: "https://portal.demo.edgecdnx.com"
+      redirectUri: "https://portal.demo.edgecdnx.com"
 
 nodeSelector: {}
 
