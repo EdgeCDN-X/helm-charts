@@ -165,6 +165,7 @@ spec:
                       x-kubernetes-list-type: map
                   required:
                   - cacheConfig
+                  - flavor
                   - name
                   type: object
                 type: array
