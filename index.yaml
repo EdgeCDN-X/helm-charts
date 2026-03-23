@@ -196,6 +196,16 @@ entries:
     version: 0.1.0
   edgecdnx-controller:
   - apiVersion: v2
+    appVersion: v0.22.0
+    created: "2026-03-23T13:21:09.305707937Z"
+    description: A Helm chart for Kubernetes
+    digest: dc960522c78a3a130d310cfc9706834a4ccf8241d341ed70dd66cc12e6715c84
+    name: edgecdnx-controller
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgecdnx-controller-0.17.0/edgecdnx-controller-0.17.0.tgz
+    version: 0.17.0
+  - apiVersion: v2
     appVersion: v0.21.0
     created: "2026-03-11T13:02:57.979315657Z"
     description: A Helm chart for Kubernetes
@@ -1063,6 +1073,16 @@ entries:
     version: 0.1.0
   locations-argocd-plugin:
   - apiVersion: v2
+    appVersion: v1.1.0
+    created: "2026-03-23T13:21:09.470028482Z"
+    description: A Helm chart for Kubernetes
+    digest: 0f8b992051b1ed6e1f1a348d4b0b0f4db3a2e8454ba14c6fd1b2eafa9034c26c
+    name: locations-argocd-plugin
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/locations-argocd-plugin-0.1.3/locations-argocd-plugin-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
     appVersion: 1.16.0
     created: "2025-11-18T14:39:35.82612356Z"
     description: A Helm chart for Kubernetes
@@ -1292,4 +1312,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2026-03-20T09:27:28.543835319Z"
+generated: "2026-03-23T13:21:09.470409245Z"
