@@ -1073,6 +1073,16 @@ entries:
     version: 0.1.0
   locations-argocd-plugin:
   - apiVersion: v2
+    appVersion: v1.1.2
+    created: "2026-03-23T14:23:37.229115734Z"
+    description: A Helm chart for Kubernetes
+    digest: 3fcd95e61c84fbfdc366da8a086f0551c3bb22600a6f448da8c4db892cf3fcdf
+    name: locations-argocd-plugin
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/locations-argocd-plugin-0.1.5/locations-argocd-plugin-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
     appVersion: v1.1.1
     created: "2026-03-23T13:26:38.032696517Z"
     description: A Helm chart for Kubernetes
@@ -1322,4 +1332,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2026-03-23T13:26:38.033065116Z"
+generated: "2026-03-23T14:23:37.229444697Z"
