@@ -14,7 +14,11 @@ spec:
     singular: project
   scope: Namespaced
   versions:
-    - name: v1alpha1
+    - additionalPrinterColumns:
+      - jsonPath: .spec.description
+        name: Description
+        type: string
+      name: v1alpha1
       schema:
         openAPIV3Schema:
           description: Project is the Schema for the projects API.
@@ -39,9 +43,9 @@ spec:
             spec:
               description: ProjectSpec defines the desired state of Project.
               properties:
-                name:
-                  type: string
                 description:
+                  type: string
+                name:
                   type: string
                 rbac:
                   properties:
@@ -49,7 +53,7 @@ spec:
                       items:
                         properties:
                           ptype:
-                            description: "Rule type: p, p2, g, g2, ..."
+                            description: 'Rule type: p, p2, g, g2, ...'
                             pattern: ^(p|g)\d*$
                             type: string
                           v0:
@@ -72,14 +76,14 @@ spec:
                             description: Positional parameters v5
                             type: string
                         required:
-                          - ptype
+                        - ptype
                         type: object
                       type: array
                     rules:
                       items:
                         properties:
                           ptype:
-                            description: "Rule type: p, p2, g, g2, ..."
+                            description: 'Rule type: p, p2, g, g2, ...'
                             pattern: ^(p|g)\d*$
                             type: string
                           v0:
@@ -102,7 +106,7 @@ spec:
                             description: Positional parameters v5
                             type: string
                         required:
-                          - ptype
+                        - ptype
                         type: object
                       type: array
                   type: object
