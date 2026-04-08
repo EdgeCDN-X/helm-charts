@@ -41,6 +41,7 @@ resources: {}
 args:
   - --listen=0.0.0.0:5555
   - --namespace=edgecdnx
+  - --prometheus_endpoint=edgecdnx-monitoring-kube-p-prometheus.monitoring.svc.cluster.local:9090
   - --production
 livenessProbe:
   httpGet:
