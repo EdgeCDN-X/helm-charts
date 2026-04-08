@@ -62,6 +62,11 @@ spec:
           {{- if eq "true" .Values.webhook.enabled }}
             - --webhook-cert-path=/certs/webhook
           {{- end }}
+          {{- if eq "true" .Values.probes.enabled }}
+            - --manage-monitoring-probes=true
+            - --location-probe-prober-url={{ .Values.probes.probeUrl }}
+            - --monitoring-release-label={{ .Values.probes.releaseLabel }}
+          {{- end }}
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:

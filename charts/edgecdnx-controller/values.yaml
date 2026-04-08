@@ -87,3 +87,8 @@ clusterDomain: cluster.local
 # This is unforutnately string type, because or argocd Applicationset Limitation.
 webhook:
   enabled: "true"
+
+probes:
+  enabled: "false"
+  probeUrl: blackbox-exporter:9115/probe
+  releaseLabel: edgecdnx-controller
