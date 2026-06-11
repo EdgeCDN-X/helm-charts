@@ -121,3 +121,6 @@ affinity: {}
 config:
   strapi-api-endpoint:
   strapi-api-key:
+
+
+env: []
