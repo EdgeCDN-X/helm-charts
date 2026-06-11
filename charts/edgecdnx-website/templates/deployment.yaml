@@ -47,6 +47,7 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /app/browser
+              subPath: runtime-config.json
           {{- with .Values.volumeMounts }}
             {{- toYaml . | nindent 12 }}
           {{- end }}
