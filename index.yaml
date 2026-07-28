@@ -1218,6 +1218,28 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgecdnx-website-0.1.0/edgecdnx-website-0.1.0.tgz
     version: 0.1.0
+  edgeottx:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2026-07-28T11:15:20.245966109Z"
+    description: A Helm chart for Kubernetes
+    digest: 7b66a409a4730c60c271a3c3a4c06a8c6f7023d1786d2a489690524974e67df8
+    name: edgeottx
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgeottx-0.1.0/edgeottx-0.1.0.tgz
+    version: 0.1.0
+  edgeottx-backend:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2026-07-28T11:15:20.434129654Z"
+    description: A Helm chart for Kubernetes
+    digest: 05b6752bba6372d83aaa17d3e354948ebd1947efa9446b77f0616d7a5e6abacf
+    name: edgeottx-backend
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgeottx-backend-0.1.0/edgeottx-backend-0.1.0.tgz
+    version: 0.1.0
   fluent-bit:
   - annotations:
       artifacthub.io/changes: |
@@ -1734,4 +1756,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2026-07-24T11:39:02.733637332Z"
+generated: "2026-07-28T11:15:20.434475036Z"
