@@ -1232,6 +1232,16 @@ entries:
   edgeottx-backend:
   - apiVersion: v2
     appVersion: latest
+    created: "2026-07-28T12:18:39.471138877Z"
+    description: A Helm chart for Kubernetes
+    digest: 1fbb85442b2cfe7537d9885dd76f1eb3ff7773af0ab2e53efde7de2cd8e6ff87
+    name: edgeottx-backend
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgeottx-backend-0.1.1/edgeottx-backend-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: latest
     created: "2026-07-28T11:15:20.434129654Z"
     description: A Helm chart for Kubernetes
     digest: 05b6752bba6372d83aaa17d3e354948ebd1947efa9446b77f0616d7a5e6abacf
@@ -1756,4 +1766,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2026-07-28T11:15:20.434475036Z"
+generated: "2026-07-28T12:18:39.471458929Z"
