@@ -1260,6 +1260,17 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgeottx-backend-0.1.0/edgeottx-backend-0.1.0.tgz
     version: 0.1.0
+  edgeottx-media-processor:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2026-07-29T11:08:14.954859856Z"
+    description: A Helm chart for Kubernetes
+    digest: 92ede9ebbde8749f18908cf6d71fcc353a34adea7a9a06ea66db517a1e870c1c
+    name: edgeottx-media-processor
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgeottx-media-processor-0.1.0/edgeottx-media-processor-0.1.0.tgz
+    version: 0.1.0
   fluent-bit:
   - annotations:
       artifacthub.io/changes: |
@@ -1776,4 +1787,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2026-07-28T13:16:40.779871775Z"
+generated: "2026-07-29T11:08:14.955119438Z"
