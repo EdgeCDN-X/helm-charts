@@ -26,6 +26,7 @@ rules:
   - prefixlists
   - services
   - zones
+  - healthcheckprofiles
   verbs:
   - create
   - delete
