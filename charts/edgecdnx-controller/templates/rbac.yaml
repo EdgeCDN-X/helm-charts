@@ -27,6 +27,7 @@ rules:
   - services
   - zones
   - healthcheckprofiles
+  - dnsendpoints
   verbs:
   - create
   - delete
