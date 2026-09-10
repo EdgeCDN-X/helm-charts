@@ -52,6 +52,8 @@ rules:
   - prefixlists/status
   - services/status
   - zones/status
+  - dnsendpoints/status
+  - healthcheckprofiles/status
   verbs:
   - get
   - patch
