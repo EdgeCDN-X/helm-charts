@@ -8,7 +8,7 @@ metadata:
     {{- include "edgecdnx-api.labels" . | nindent 4 }}
 rules:
 - apiGroups: ["infrastructure.edgecdnx.com"]
-  resources: ["prefixlists", "locations", "services", "projects", "zones"]
+  resources: ["prefixlists", "locations", "services", "projects", "zones", "dnsendpoints", "healthcheckprofiles"]
   verbs: ["get", "watch", "list", "create", "update", "patch", "delete"]
 - apiGroups: ["argoproj.io"]
   resources: ["applicationsets"]
