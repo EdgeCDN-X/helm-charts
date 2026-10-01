@@ -125,3 +125,8 @@ affinity: {}
 command:
   - /healthchecker
   - --leader-elect
+
+# Additional environment variables for OTLP exporters and SDK configuration.
+# For example, set OTEL_TRACES_SAMPLER=parentbased_traceidratio and
+# OTEL_TRACES_SAMPLER_ARG="0.1" to sample approximately 10% of root traces.
+extraEnv: []
