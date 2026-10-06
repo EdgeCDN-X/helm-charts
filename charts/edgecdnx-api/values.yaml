@@ -60,4 +60,12 @@ tolerations: []
 
 affinity: {}
 
+# Live location healthchecks are read from the healthchecker TimescaleDB.
+# Provide the connection string via HEALTHCHECK_DB_DSN (or the --healthcheck_db_dsn arg), e.g.:
+# env:
+#   - name: HEALTHCHECK_DB_DSN
+#     valueFrom:
+#       secretKeyRef:
+#         name: healthchecks-db
+#         key: dsn # postgres://user:pass@host:5432/app?sslmode=require
 env: []
