@@ -115,6 +115,16 @@ entries:
     version: 0.1.0
   edgecdnx-api:
   - apiVersion: v2
+    appVersion: v0.7.1
+    created: "2026-10-06T12:18:07.749126098Z"
+    description: A Helm chart for Kubernetes
+    digest: dc8be4e3f02e5ab33c2e34229c5b8f52ced8ca1ae13ccceee47b8b59fa74e2f0
+    name: edgecdnx-api
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgecdnx-api-0.4.0/edgecdnx-api-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
     appVersion: v0.6.1
     created: "2026-09-24T10:40:53.770147109Z"
     description: A Helm chart for Kubernetes
@@ -1218,6 +1228,16 @@ entries:
     version: 0.1.0
   edgecdnx-ui:
   - apiVersion: v2
+    appVersion: v0.7.1
+    created: "2026-10-06T12:18:07.961344641Z"
+    description: A Helm chart for Kubernetes
+    digest: 576b94cd300f86b878f16e992a4c4ad1ebf8a82350fd83e556f980ce8f519ea7
+    name: edgecdnx-ui
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgecdnx-ui-0.4.0/edgecdnx-ui-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
     appVersion: v0.6.1
     created: "2026-09-24T10:32:18.660595416Z"
     description: A Helm chart for Kubernetes
@@ -2047,4 +2067,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2026-10-02T07:56:14.395383255Z"
+generated: "2026-10-06T12:18:07.961995651Z"
