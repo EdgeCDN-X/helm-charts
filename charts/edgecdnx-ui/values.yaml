@@ -129,6 +129,7 @@ config:
       requireHttps: true
       redirectUri: "https://portal.demo.edgecdnx.com"
     adminGroups: ["admin"]
+  dnsNameservers: ["ns1.demo.edgecdnx.com"]
 
 nodeSelector: {}
 
