@@ -34,7 +34,7 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if eq "true" .Values.webhook.enabled }}
+          {{- if eq "true" (toString .Values.webhook.enabled) }}
           ports:
             - containerPort: 9443
               name: webhook-server
@@ -59,10 +59,10 @@ spec:
           {{- with .Values.targetNamespace }}
             - --infrastructure-target-namespace={{ . }}
           {{- end }}
-          {{- if eq "true" .Values.webhook.enabled }}
+          {{- if eq "true" (toString .Values.webhook.enabled) }}
             - --webhook-cert-path=/certs/webhook
           {{- end }}
-          {{- if eq "true" .Values.probes.enabled }}
+          {{- if eq "true" (toString .Values.probes.enabled) }}
             - --manage-monitoring-probes=true
             - --location-probe-prober-url={{ .Values.probes.probeUrl }}
             - --monitoring-release-label={{ .Values.probes.releaseLabel }}
@@ -73,7 +73,7 @@ spec:
             {{- toYaml .Values.readinessProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- if eq "true" .Values.webhook.enabled }}
+          {{- if eq "true" (toString .Values.webhook.enabled) }}
           volumeMounts:
             - name: webhook-certs
               mountPath: /certs/webhook
