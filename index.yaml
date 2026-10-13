@@ -115,6 +115,16 @@ entries:
     version: 0.1.0
   edgecdnx-api:
   - apiVersion: v2
+    appVersion: v0.10.0
+    created: "2026-10-13T13:44:44.691170099Z"
+    description: A Helm chart for Kubernetes
+    digest: afe8fd22a2a18fc29006b8163bf2fee3659977568ded422afb1ef8c4bab8acb1
+    name: edgecdnx-api
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgecdnx-api-0.5.2/edgecdnx-api-0.5.2.tgz
+    version: 0.5.2
+  - apiVersion: v2
     appVersion: v0.9.0
     created: "2026-10-13T11:02:21.411776085Z"
     description: A Helm chart for Kubernetes
@@ -336,6 +346,16 @@ entries:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgecdnx-backend-0.1.0/edgecdnx-backend-0.1.0.tgz
     version: 0.1.0
   edgecdnx-controller:
+  - apiVersion: v2
+    appVersion: v0.35.0
+    created: "2026-10-13T13:44:44.897786839Z"
+    description: A Helm chart for Kubernetes
+    digest: e178ad41ee3fb208269ffd3fec7e9512b05dc77d97191761e13346657536a3de
+    name: edgecdnx-controller
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgecdnx-controller-0.30.0/edgecdnx-controller-0.30.0.tgz
+    version: 0.30.0
   - apiVersion: v2
     appVersion: v0.34.0
     created: "2026-09-29T12:32:20.428605741Z"
@@ -1248,6 +1268,16 @@ entries:
     version: 0.1.0
   edgecdnx-ui:
   - apiVersion: v2
+    appVersion: v0.10.0
+    created: "2026-10-13T13:44:45.126489645Z"
+    description: A Helm chart for Kubernetes
+    digest: ffbf863ffed42a51ed9f8cd188d5d86102d7cb3de2226b61cc1b10abe5bada39
+    name: edgecdnx-ui
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgecdnx-ui-1.0.3/edgecdnx-ui-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
     appVersion: v0.9.0
     created: "2026-10-13T11:02:21.709980323Z"
     description: A Helm chart for Kubernetes
@@ -2147,4 +2177,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2026-10-13T11:02:21.710431191Z"
+generated: "2026-10-13T13:44:45.126927426Z"
