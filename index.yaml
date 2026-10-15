@@ -21,6 +21,35 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/consul-esm-0.1.0/consul-esm-0.1.0.tgz
     version: 0.1.0
+  coredns:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Add optional replica count and PodDisruptionBudget for the cluster-proportional-autoscaler
+    apiVersion: v2
+    appVersion: 1.14.7
+    created: "2026-10-15T20:03:27.018946913Z"
+    description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
+      DNS Services
+    digest: bcbe550a4a9c23e2a32e30377bf4f49ca5f7b0ae9e0974d121b617cab2ce4e32
+    home: https://coredns.io
+    icon: https://coredns.io/images/CoreDNS_Colour_Horizontal.png
+    keywords:
+    - coredns
+    - dns
+    - kubedns
+    maintainers:
+    - name: mrueg
+    - name: haad
+    - name: hagaibarel
+    - name: shubham-cmyk
+    name: coredns
+    sources:
+    - https://github.com/coredns/coredns
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/coredns-1.48.2/coredns-1.48.2.tgz
+    version: 1.48.2
   coredns-rbac:
   - apiVersion: v2
     appVersion: 0.0.0
@@ -2227,4 +2256,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2026-10-13T15:41:32.851381975Z"
+generated: "2026-10-15T20:03:27.019269286Z"
