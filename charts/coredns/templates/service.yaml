@@ -50,7 +50,10 @@ spec:
   loadBalancerClass: {{ .Values.service.loadBalancerClass }}
   {{- end }}
   ports:
-    {{- include "coredns.servicePortsV2" . | indent 2 -}}
+{{- include "coredns.servicePortsV2" . | nindent 2 }}
+{{- with .Values.extraPorts }}
+    {{- toYaml . | nindent 2 }}
+{{- end }}
   type: {{ default "ClusterIP" .Values.serviceType }}
   {{- if .Values.service.ipFamilyPolicy }}
   ipFamilyPolicy: {{ .Values.service.ipFamilyPolicy }}

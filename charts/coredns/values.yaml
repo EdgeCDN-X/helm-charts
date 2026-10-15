@@ -126,7 +126,7 @@ servers:
 - zones:
   - zone: .
     use_tcp: true
-  port: 53
+    port: 53
   # -- expose the service on a different port
   # servicePort: 5353
   # If serviceType is nodePort you can specify nodePort here
@@ -257,6 +257,9 @@ zoneFiles: []
 #      example.com.   IN NS  a.iana-servers.net.
 #      example.com.   IN A   192.168.99.102
 #      *.example.com. IN A   192.168.99.102
+
+# optional array of additional ports
+extraPorts: []
 
 # optional array of sidecar containers
 extraContainers: []
