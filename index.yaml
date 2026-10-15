@@ -28,6 +28,34 @@ entries:
           description: Add optional replica count and PodDisruptionBudget for the cluster-proportional-autoscaler
     apiVersion: v2
     appVersion: 1.14.7
+    created: "2026-10-15T20:19:42.173648895Z"
+    description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
+      DNS Services
+    digest: 6ad1a765ab6019796c2a23f9a8ef4661166e5cb356d77d9e88026039a3baec5a
+    home: https://coredns.io
+    icon: https://coredns.io/images/CoreDNS_Colour_Horizontal.png
+    keywords:
+    - coredns
+    - dns
+    - kubedns
+    maintainers:
+    - name: mrueg
+    - name: haad
+    - name: hagaibarel
+    - name: shubham-cmyk
+    name: coredns
+    sources:
+    - https://github.com/coredns/coredns
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/coredns-1.49.0/coredns-1.49.0.tgz
+    version: 1.49.0
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: added
+          description: Add optional replica count and PodDisruptionBudget for the cluster-proportional-autoscaler
+    apiVersion: v2
+    appVersion: 1.14.7
     created: "2026-10-15T20:03:27.018946913Z"
     description: CoreDNS is a DNS server that chains plugins and provides Kubernetes
       DNS Services
@@ -2256,4 +2284,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2026-10-15T20:03:27.019269286Z"
+generated: "2026-10-15T20:19:42.174019379Z"
