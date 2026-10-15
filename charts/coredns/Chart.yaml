@@ -1,0 +1,23 @@
+apiVersion: v2
+name: coredns
+version: 1.48.2
+appVersion: 1.14.7
+home: https://coredns.io
+icon: https://coredns.io/images/CoreDNS_Colour_Horizontal.png
+description: CoreDNS is a DNS server that chains plugins and provides Kubernetes DNS Services
+keywords:
+  - coredns
+  - dns
+  - kubedns
+sources:
+  - https://github.com/coredns/coredns
+maintainers:
+  - name: mrueg
+  - name: haad
+  - name: hagaibarel
+  - name: shubham-cmyk
+type: application
+annotations:
+  artifacthub.io/changes: |
+    - kind: added
+      description: Add optional replica count and PodDisruptionBudget for the cluster-proportional-autoscaler
