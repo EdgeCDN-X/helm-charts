@@ -37,6 +37,7 @@ rules:
   - zones
   - healthcheckprofiles
   - dnsendpoints
+  - projects
   verbs:
   - create
   - delete
@@ -52,6 +53,7 @@ rules:
   - prefixlists/finalizers
   - services/finalizers
   - zones/finalizers
+  - projects/status
   verbs:
   - update
 - apiGroups:
@@ -63,6 +65,7 @@ rules:
   - zones/status
   - dnsendpoints/status
   - healthcheckprofiles/status
+  - projects/status
   verbs:
   - get
   - patch
