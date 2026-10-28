@@ -6,6 +6,15 @@ metadata:
   labels:
     {{- include "edgecdnx-controller.labels" . | nindent 4 }}
 rules:
+{{- if eq .Values.role "downstream" }}
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  verbs:
+  - create
+  - get
+{{- end }}
 - apiGroups:
   - argoproj.io
   resources:

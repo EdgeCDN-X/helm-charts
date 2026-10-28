@@ -53,6 +53,13 @@ spec:
           {{- with .Values.role }}
             - --role={{ . }}
           {{- end }}
+          {{- if eq .Values.role "downstream" }}
+            - --target={{ required "downstream.target is required when role is downstream" .Values.downstream.target }}
+            - --upstream-kubeconfig=/var/run/edgecdnx/upstream/kubeconfig
+            - --downstream-workers={{ .Values.downstream.workers }}
+            - --downstream-client-qps={{ .Values.downstream.clientQPS }}
+            - --downstream-client-burst={{ .Values.downstream.clientBurst }}
+          {{- end }}
           {{- with .Values.consulEndpoint }}
             - --consul-endpoint={{ . }}
           {{- end }}
@@ -73,11 +80,18 @@ spec:
             {{- toYaml .Values.readinessProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- if eq "true" .Values.webhook.enabled }}
+          {{- if or (eq "true" .Values.webhook.enabled) (eq .Values.role "downstream") }}
           volumeMounts:
+            {{- if eq "true" .Values.webhook.enabled }}
             - name: webhook-certs
               mountPath: /certs/webhook
               readOnly: true
+            {{- end }}
+            {{- if eq .Values.role "downstream" }}
+            - name: upstream-kubeconfig
+              mountPath: /var/run/edgecdnx/upstream
+              readOnly: true
+            {{- end }}
           {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
@@ -91,9 +105,19 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- if .Values.webhook.enabled }}
+      {{- if or (eq "true" .Values.webhook.enabled) (eq .Values.role "downstream") }}
       volumes:
+        {{- if eq "true" .Values.webhook.enabled }}
         - name: webhook-certs
           secret:
             secretName: {{ include "edgecdnx-controller.fullname" . }}-tls
+        {{- end }}
+        {{- if eq .Values.role "downstream" }}
+        - name: upstream-kubeconfig
+          secret:
+            secretName: {{ required "downstream.kubeconfigSecretName is required when role is downstream" .Values.downstream.kubeconfigSecretName }}
+            items:
+              - key: {{ .Values.downstream.kubeconfigSecretKey | quote }}
+                path: kubeconfig
+        {{- end }}
       {{- end }}

@@ -82,6 +82,14 @@ role: controller
 consulEndpoint: ""
 targetNamespace: ""
 
+downstream:
+  target: ""
+  kubeconfigSecretName: ""
+  kubeconfigSecretKey: kubeconfig
+  workers: 16
+  clientQPS: 100
+  clientBurst: 200
+
 clusterDomain: cluster.local
 
 # This is unforutnately string type, because or argocd Applicationset Limitation.
