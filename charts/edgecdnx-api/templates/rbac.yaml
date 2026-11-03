@@ -18,6 +18,9 @@ rules:
   verbs: ["get", "watch", "list"]
 - apiGroups: [""]
   resources: ["resourcequotas"]
+  verbs: ["get", "list", "create", "update", "patch", "delete"]
+- apiGroups: [""]
+  resources: ["namespaces"]
   verbs: ["get", "list", "create", "update", "patch"]
 ---
 kind: ClusterRoleBinding
