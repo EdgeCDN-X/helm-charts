@@ -69,3 +69,34 @@ affinity: {}
 #         name: healthchecks-db
 #         key: dsn # postgres://user:pass@host:5432/app?sslmode=require
 env: []
+
+# Stripe billing. Also requires `billing` in --feature-gates (args) and --namespaced=true.
+billing:
+  enabled: false
+  # Secret providing STRIPE_SECRET_KEY and STRIPE_WEBHOOK_SECRET.
+  existingSecret: ""
+  # Rendered to /etc/edgecdnx/billing.yaml. URLs may contain {project}.
+  config: {}
+  #   checkoutSuccessURL: https://app.example.com/projects/{project}/billing?checkout=success
+  #   checkoutCancelURL: https://app.example.com/projects/{project}/billing?checkout=cancel
+  #   portalReturnURL: https://app.example.com/projects/{project}/billing
+  #   exemptProjects: [admin]
+  #   tiers:
+  #     - name: free
+  #       displayName: Free
+  #       stripePriceLookupKey: edgecdnx_free_monthly
+  #       quota:
+  #         count/zones.infrastructure.edgecdnx.com: "2"
+  #         count/dnsendpoints.infrastructure.edgecdnx.com: "100"
+  #     - name: business
+  #       displayName: Business
+  #       stripePriceLookupKey: edgecdnx_business_monthly
+  #       quota:
+  #         count/zones.infrastructure.edgecdnx.com: "10"
+  #         count/dnsendpoints.infrastructure.edgecdnx.com: "5000"
+  #     - name: enterprise
+  #       displayName: Enterprise
+  #       stripePriceLookupKey: edgecdnx_enterprise_monthly
+  #       quota:
+  #         count/zones.infrastructure.edgecdnx.com: "50"
+  #         count/dnsendpoints.infrastructure.edgecdnx.com: "10000"

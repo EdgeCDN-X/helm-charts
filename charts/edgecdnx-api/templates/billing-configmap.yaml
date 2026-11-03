@@ -1,0 +1,11 @@
+{{- if .Values.billing.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "edgecdnx-api.fullname" . }}-billing
+  labels:
+    {{- include "edgecdnx-api.labels" . | nindent 4 }}
+data:
+  billing.yaml: |
+    {{- toYaml .Values.billing.config | nindent 4 }}
+{{- end }}

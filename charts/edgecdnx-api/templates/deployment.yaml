@@ -11,9 +11,14 @@ spec:
       {{- include "edgecdnx-api.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
+      {{- if or .Values.podAnnotations .Values.billing.enabled }}
       annotations:
+        {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 8 }}
+        {{- end }}
+        {{- if .Values.billing.enabled }}
+        checksum/billing-config: {{ toYaml .Values.billing.config | sha256sum }}
+        {{- end }}
       {{- end }}
       labels:
         {{- include "edgecdnx-api.labels" . | nindent 8 }}
@@ -44,9 +49,19 @@ spec:
           env:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          {{- with .Values.args }}
+          {{- if .Values.billing.enabled }}
+          envFrom:
+            - secretRef:
+                name: {{ required "billing.existingSecret is required when billing is enabled" .Values.billing.existingSecret }}
+          {{- end }}
+          {{- if or .Values.args .Values.billing.enabled }}
           args:
+            {{- with .Values.args }}
             {{- toYaml . | nindent 12 }}
+            {{- end }}
+            {{- if .Values.billing.enabled }}
+            - --billing_config=/etc/edgecdnx/billing.yaml
+            {{- end }}
           {{- end }}
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
@@ -54,13 +69,27 @@ spec:
             {{- toYaml .Values.readinessProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- with .Values.volumeMounts }}
+          {{- if or .Values.volumeMounts .Values.billing.enabled }}
           volumeMounts:
+            {{- with .Values.volumeMounts }}
             {{- toYaml . | nindent 12 }}
+            {{- end }}
+            {{- if .Values.billing.enabled }}
+            - name: billing-config
+              mountPath: /etc/edgecdnx
+              readOnly: true
+            {{- end }}
           {{- end }}
-      {{- with .Values.volumes }}
+      {{- if or .Values.volumes .Values.billing.enabled }}
       volumes:
+        {{- with .Values.volumes }}
         {{- toYaml . | nindent 8 }}
+        {{- end }}
+        {{- if .Values.billing.enabled }}
+        - name: billing-config
+          configMap:
+            name: {{ include "edgecdnx-api.fullname" . }}-billing
+        {{- end }}
       {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
