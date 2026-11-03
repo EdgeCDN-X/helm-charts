@@ -54,10 +54,13 @@ spec:
             - secretRef:
                 name: {{ required "billing.existingSecret is required when billing is enabled" .Values.billing.existingSecret }}
           {{- end }}
-          {{- if or .Values.args .Values.billing.enabled }}
+          {{- if or .Values.args .Values.featureGates .Values.billing.enabled }}
           args:
             {{- with .Values.args }}
             {{- toYaml . | nindent 12 }}
+            {{- end }}
+            {{- with .Values.featureGates }}
+            - {{ printf "--feature-gates=%s" (join "," .) | quote }}
             {{- end }}
             {{- if .Values.billing.enabled }}
             - --billing_config=/etc/edgecdnx/billing.yaml

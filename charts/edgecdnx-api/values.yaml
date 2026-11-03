@@ -38,6 +38,10 @@ ingress:
   tls: []
 
 resources: {}
+# Enabled API feature gates, rendered as one comma-separated --feature-gates argument.
+# Example: [billing, cachingreconciler]
+# When using this list, do not also set --feature-gates in args.
+featureGates: []
 args:
   - --listen=0.0.0.0:5555
   - --namespace=edgecdnx
@@ -70,7 +74,7 @@ affinity: {}
 #         key: dsn # postgres://user:pass@host:5432/app?sslmode=require
 env: []
 
-# Stripe billing. Also requires `billing` in --feature-gates (args) and --namespaced=true.
+# Stripe billing. Also requires featureGates: [billing] and --namespaced=true.
 billing:
   enabled: false
   # Secret providing STRIPE_SECRET_KEY and STRIPE_WEBHOOK_SECRET.
