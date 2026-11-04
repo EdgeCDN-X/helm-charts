@@ -53,6 +53,9 @@ spec:
           {{- with .Values.role }}
             - --role={{ . }}
           {{- end }}
+          {{- with .Values.leaderElectionLockId }}
+            - --leader-election-lock-id={{ . }}
+          {{- end }}
           {{- if eq .Values.role "downstream" }}
             - --target={{ required "downstream.target is required when role is downstream" .Values.downstream.target }}
             - --upstream-kubeconfig=/var/run/edgecdnx/upstream/kubeconfig

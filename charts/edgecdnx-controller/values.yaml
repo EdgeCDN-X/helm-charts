@@ -100,3 +100,5 @@ probes:
   enabled: "false"
   probeUrl: blackbox-exporter:9115/probe
   releaseLabel: edgecdnx-controller
+
+leaderElectionLockId: "9cbc19dd.edgecdnx.com"
