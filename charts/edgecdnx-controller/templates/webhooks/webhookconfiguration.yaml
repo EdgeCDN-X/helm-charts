@@ -50,6 +50,20 @@ webhooks:
   admissionReviewVersions: ["v1"]
   sideEffects: None
   failurePolicy: Fail
+- name: healthcheckprofile-validate.edgecdnx.com
+  clientConfig:
+    service:
+      name: {{ include "edgecdnx-controller.fullname" . }}
+      namespace: {{ .Release.Namespace }}
+      path: /validate-infrastructure-edgecdnx-com-v1alpha1-healthcheckprofile
+  rules:
+  - operations: ["CREATE", "UPDATE"]
+    apiGroups: ["infrastructure.edgecdnx.com"]
+    apiVersions: ["v1alpha1"]
+    resources: ["healthcheckprofiles"]
+  admissionReviewVersions: ["v1"]
+  sideEffects: None
+  failurePolicy: Fail
 - name: project-validate.edgecdnx.com
   clientConfig:
     service:
