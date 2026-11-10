@@ -12,6 +12,8 @@ groupName: acme.edgecdnx.com
 
 replicaCount: 1
 
+logLevel: 2
+
 edgecdnx:
   projectID: ""
   apiURL: https://api.edgecdnx.com
