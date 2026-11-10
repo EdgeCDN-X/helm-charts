@@ -514,6 +514,15 @@ entries:
     version: 0.1.0
   edgecdnx-cert-manager-webhook:
   - apiVersion: v1
+    appVersion: v0.2.2
+    created: "2026-11-10T20:53:53.434294388Z"
+    description: cert-manager DNS01 webhook for the EdgeCDN-X API
+    digest: 5f41e5c41e82fd7c77264a852053a9000ff87c8a85f5ed4b67a81f161ba8c788
+    name: edgecdnx-cert-manager-webhook
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgecdnx-cert-manager-webhook-1.1.0/edgecdnx-cert-manager-webhook-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v1
     appVersion: v0.2.1
     created: "2026-11-10T14:47:45.464879723Z"
     description: cert-manager DNS01 webhook for the EdgeCDN-X API
@@ -2584,4 +2593,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2026-11-10T14:47:45.465165884Z"
+generated: "2026-11-10T20:53:53.434666184Z"
