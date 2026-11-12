@@ -124,7 +124,6 @@ config:
     # Requires --feature-gates=billing on edgecdnx-api.
     billing: false
   auth:
-    allowSignup: true
     oidc:
       issuer: "https://dex.demo.edgecdnx.com/dex"
       token: "https://dex.demo.edgecdnx.com/dex/token_endpoint"
