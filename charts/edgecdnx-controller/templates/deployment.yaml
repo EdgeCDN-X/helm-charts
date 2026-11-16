@@ -77,6 +77,9 @@ spec:
             - --location-probe-prober-url={{ .Values.probes.probeUrl }}
             - --monitoring-release-label={{ .Values.probes.releaseLabel }}
           {{- end }}
+          {{- with .Values.featureGates }}
+            - --feature-gates={{ . | join "," }}
+          {{- end }}
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
