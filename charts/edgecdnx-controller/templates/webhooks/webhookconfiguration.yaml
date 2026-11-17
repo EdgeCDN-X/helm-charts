@@ -15,7 +15,7 @@ webhooks:
       namespace: {{ .Release.Namespace }}
       path: /validate-tenancy
   rules:
-  - operations: ["CREATE", "UPDATE"]
+  - operations: ["CREATE", "UPDATE", "DELETE"]
     apiGroups: ["infrastructure.edgecdnx.com"]
     apiVersions: ["v1alpha1"]
     resources: ["projects", "apikeys", "dnsendpoints", "healthcheckprofiles", "locations", "prefixlists", "services", "zones"]
