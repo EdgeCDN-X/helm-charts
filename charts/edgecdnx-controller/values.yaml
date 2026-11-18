@@ -104,3 +104,5 @@ probes:
 leaderElectionLockId: "9cbc19dd.edgecdnx.com"
 
 featureGates: []
+
+reconcilerClass: ""

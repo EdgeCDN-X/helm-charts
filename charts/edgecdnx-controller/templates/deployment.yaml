@@ -80,6 +80,9 @@ spec:
           {{- with .Values.featureGates }}
             - --feature-gates={{ . | join "," }}
           {{- end }}
+          {{- with .Values.reconcilerClass }}
+            - --reconciler-class={{ . }}
+          {{- end }}
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
