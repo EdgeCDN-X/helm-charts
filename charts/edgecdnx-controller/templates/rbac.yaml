@@ -139,6 +139,20 @@ rules:
   - update
   - watch
 - apiGroups:
+  - apisix.apache.org
+  resources:
+  - apisixroutes
+  - apisixupstreams
+  - apisixtlses
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
   - ""
   resources:
   - services
