@@ -65,6 +65,11 @@ spec:
                   - alertName
                   type: object
                 type: array
+              baseDomain:
+                description: |-
+                  Basedomain specifies the base domain for this location.
+                  It is used to construct fully qualified domain names for resources within this location.
+                type: string
               fallbackLocations:
                 description: Specifies the list of locations that this location can
                   fall back to.
