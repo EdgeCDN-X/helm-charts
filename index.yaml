@@ -172,6 +172,16 @@ entries:
     version: 0.1.0
   edgecdnx-api:
   - apiVersion: v2
+    appVersion: v1.6.1
+    created: "2026-11-20T10:28:26.523377787Z"
+    description: A Helm chart for Kubernetes
+    digest: 9e2d567e66d0c6a3a244c032a4748673aa5deef68417ada825431c0703c090b3
+    name: edgecdnx-api
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgecdnx-api-1.1.8/edgecdnx-api-1.1.8.tgz
+    version: 1.1.8
+  - apiVersion: v2
     appVersion: v1.5.0
     created: "2026-11-13T13:45:31.175533979Z"
     description: A Helm chart for Kubernetes
@@ -599,6 +609,16 @@ entries:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgecdnx-cert-manager-webhook-0.1.0/edgecdnx-cert-manager-webhook-0.1.0.tgz
     version: 0.1.0
   edgecdnx-controller:
+  - apiVersion: v2
+    appVersion: v1.5.0
+    created: "2026-11-20T10:28:26.66843728Z"
+    description: A Helm chart for Kubernetes
+    digest: a28ae858d59894aeb67f7b34947cd472869f3a92c5b0389946428486cf77902c
+    name: edgecdnx-controller
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgecdnx-controller-1.4.0/edgecdnx-controller-1.4.0.tgz
+    version: 1.4.0
   - apiVersion: v2
     appVersion: v1.4.0
     created: "2026-11-18T22:26:21.731423537Z"
@@ -1661,6 +1681,16 @@ entries:
     version: 0.1.0
   edgecdnx-ui:
   - apiVersion: v2
+    appVersion: v1.5.0
+    created: "2026-11-20T10:28:26.810417154Z"
+    description: A Helm chart for Kubernetes
+    digest: a8ec788be108a462e8b60f7463bd73e33918e60decd0f9466cc6309a1b4629eb
+    name: edgecdnx-ui
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/edgecdnx-ui-2.2.1/edgecdnx-ui-2.2.1.tgz
+    version: 2.2.1
+  - apiVersion: v2
     appVersion: v1.4.3
     created: "2026-11-12T22:31:57.607042848Z"
     description: A Helm chart for Kubernetes
@@ -2228,6 +2258,16 @@ entries:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/fluent-bit-0.55.0/fluent-bit-0.55.0.tgz
     version: 0.55.0
   healthchecker:
+  - apiVersion: v2
+    appVersion: v0.6.0
+    created: "2026-11-20T10:28:26.925842356Z"
+    description: A Helm chart for Kubernetes
+    digest: 92b0b9b82029bdedec567c0f94f20f61e87aa3345a25c72e637811eba9c5b2e1
+    name: healthchecker
+    type: application
+    urls:
+    - https://github.com/EdgeCDN-X/helm-charts/releases/download/healthchecker-0.3.6/healthchecker-0.3.6.tgz
+    version: 0.3.6
   - apiVersion: v2
     appVersion: v0.5.0
     created: "2026-11-12T13:20:46.126446897Z"
@@ -2801,4 +2841,4 @@ entries:
     urls:
     - https://github.com/EdgeCDN-X/helm-charts/releases/download/tls-cert-thrower-0.1.0/tls-cert-thrower-0.1.0.tgz
     version: 0.1.0
-generated: "2026-11-18T22:26:21.732106394Z"
+generated: "2026-11-20T10:28:26.926826966Z"
