@@ -14,6 +14,31 @@ rules:
   verbs:
   - create
   - get
+{{- if .Values.downstream.http01SolverImage }}
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - services
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - update
+  - watch
+- apiGroups:
+  - apisix.apache.org
+  resources:
+  - apisixroutes
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - update
+  - watch
+{{- end }}
 {{- end }}
 - apiGroups:
   - argoproj.io

@@ -62,6 +62,9 @@ spec:
             - --downstream-workers={{ .Values.downstream.workers }}
             - --downstream-client-qps={{ .Values.downstream.clientQPS }}
             - --downstream-client-burst={{ .Values.downstream.clientBurst }}
+          {{- with .Values.downstream.http01SolverImage }}
+            - --downstream-http01-solver-image={{ . }}
+          {{- end }}
           {{- end }}
           {{- with .Values.consulEndpoint }}
             - --consul-endpoint={{ . }}
