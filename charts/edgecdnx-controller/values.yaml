@@ -107,3 +107,6 @@ leaderElectionLockId: "9cbc19dd.edgecdnx.com"
 featureGates: []
 
 reconcilerClass: ""
+
+# Proxy CIDRs trusted by APISIX secure URL client IP resolution.
+apisixTrustedProxies: []

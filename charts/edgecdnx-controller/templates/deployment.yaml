@@ -86,6 +86,11 @@ spec:
           {{- with .Values.reconcilerClass }}
             - --reconciler-class={{ . }}
           {{- end }}
+          {{- if eq .Values.role "cache-controller" }}
+          {{- with .Values.apisixTrustedProxies }}
+            - {{ printf "--apisix-trusted-proxies=%s" (join "," .) | quote }}
+          {{- end }}
+          {{- end }}
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
