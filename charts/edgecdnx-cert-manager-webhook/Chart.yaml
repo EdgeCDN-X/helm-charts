@@ -1,5 +1,6 @@
-apiVersion: v1
-appVersion: "v0.3.1"
+apiVersion: v2
+appVersion: "v0.4.0"
 description: cert-manager DNS01 webhook for the EdgeCDN-X API or controller CRDs
 name: edgecdnx-cert-manager-webhook
-version: 1.2.0-rc0
+version: 1.2.0
+type: application
