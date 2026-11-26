@@ -65,6 +65,9 @@ spec:
             {{- if .Values.billing.enabled }}
             - --billing_config=/etc/edgecdnx/billing.yaml
             {{- end }}
+            {{- with .Values.defaultRouteSelector }}
+            - {{ printf "--default-route-selector=%s" (toJson .) | quote }}
+            {{- end }}
           {{- end }}
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}

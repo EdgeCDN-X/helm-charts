@@ -104,3 +104,7 @@ billing:
   #       quota:
   #         count/zones.infrastructure.edgecdnx.com: "50"
   #         count/dnsendpoints.infrastructure.edgecdnx.com: "10000"
+
+defaultRouteSelector: 
+  matchLabels:
+    project: edgecdnx
